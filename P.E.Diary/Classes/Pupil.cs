@@ -1,5 +1,4 @@
-﻿using System.Net.Cache;
-using Microsoft.VisualBasic.CompilerServices;
+﻿using System;
 using NCalc;
 
 namespace P.E._Helper
