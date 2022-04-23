@@ -33,6 +33,7 @@ namespace P.E.Diary
             }
             Corruptor.LoadNames();
             InitializeComponent();
+            LeftMenu.PupilsTable = PupilsTable;
         }
     }
 }

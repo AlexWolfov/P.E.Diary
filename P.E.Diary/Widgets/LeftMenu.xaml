@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name ="Back" Background="White" Height="Auto" Grid.RowSpan="2"/>
-        <ComboBox Margin="4,0,4,0"/>
+        <ComboBox Margin="4,0,4,0" Name="ClassesList" SelectionChanged="ClassesList_SelectionChanged"/>
         <wpfui:NavigationStore
                 x:Name="RootNavigation"
                 Grid.Column="0"

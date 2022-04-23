@@ -30,7 +30,7 @@ namespace P.E.Diary.Widgets
                 CurrentClass = newClass;
                 foreach (var pupil in CurrentClass.Pupils)
                 {
-                    pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, pupil.Age.ToString(), pupil.Height.ToString(), pupil.Weight.ToString()));
+                    pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, (pupil.Birthday).Substring(0,10), pupil.Height.ToString(), pupil.Weight.ToString()));
                 }
             }
         }
@@ -49,8 +49,8 @@ namespace P.E.Diary.Widgets
                 case "Пол":
                     return selectedItem.Пол;
                     break;
-                case "Возраст":
-                    return selectedItem.Возраст;
+                case "Дата_рождения":
+                    return selectedItem.Дата_рождения;
                     break;
                 case "Высота":
                     return selectedItem.Высота;
@@ -62,11 +62,6 @@ namespace P.E.Diary.Widgets
                     break;
             }
             return "";
-        }
-
-        private void EditCurrentCell(string newData)
-        {
-            EditCellInRow(GetCurrentCellAdressAxesY(), GetCurrentCellAdressAxesX(), newData);
         }
 
         private int GetCurrentCellAdressAxesY()
@@ -93,8 +88,8 @@ namespace P.E.Diary.Widgets
                 case "Пол":
                     selectedItem.Пол = newData;
                     break;
-                case "Возраст":
-                    selectedItem.Возраст = newData;
+                case "Дата_рождения":
+                    selectedItem.Дата_рождения = newData;
                     break;
                 case "Высота":
                     selectedItem.Высота = newData;
@@ -129,32 +124,21 @@ namespace P.E.Diary.Widgets
                         else
                         {
                             FoolProof.UniversalProtection("Введите М либо Ж (русской раскладкой)");
-                            EditCurrentCell(pupil.Gender);
                         }
                         break;
-                    case "Возраст":
-                        if (!_cellEditIsCorrect)
+                    case "Дата_рождения":
+                        string date = FoolProof.ReturnDate(pupil.Birthday, value);
+                        if (date != "-1")
                         {
-                            string date = FoolProof.ReturnDate(pupil.Birthday, value);
-                            if (date != "-1")
-                            {
-                                pupil.Birthday = date;
-                            }
-                            _cellEditIsCorrect = true;
-                            EditCurrentCell(pupil.Age.ToString());
+                            pupil.Birthday = date;
                         }
-                        else
-                        {
-                            _cellEditIsCorrect = false;
-                        }
+                        _cellEditIsCorrect = true;
                         break;
                     case "Высота":
                         FoolProof.SetInt(ref pupil.Height, value);
-                        EditCurrentCell(pupil.Height.ToString());
                         break;
                     case "Вес":
                         FoolProof.SetInt(ref pupil.Weight, value);
-                        EditCurrentCell(pupil.Weight.ToString());
                         break;
                     default:
                         break;
@@ -162,6 +146,7 @@ namespace P.E.Diary.Widgets
 
                 CurrentClass.Pupils[GetCurrentCellAdressAxesY()] = pupil;
                 SqlReader.EditPupil(pupil);
+                //LoadTable(CurrentClass);
             }
         }
 
@@ -181,6 +166,7 @@ namespace P.E.Diary.Widgets
             SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
             CurrentClass.Pupils.Remove(
                 CurrentClass.Pupils[GetCurrentCellAdressAxesY()]); //удалием ученика из списка класса
+            LoadTable(CurrentClass);
         }
 
         
@@ -203,12 +189,6 @@ namespace P.E.Diary.Widgets
 
 
         #region Events
-
-        private void Table_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            CurrentClass = SqlReader.LoadClasses()["9 Е"];
-            LoadTable(CurrentClass);
-        }
 
         private void Table_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -324,8 +304,12 @@ namespace P.E.Diary.Widgets
 
         private void AddButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            List <PupilRow> rows = (List<PupilRow>) Table.ItemsSource;
             AddRow();
+        }
+
+        private void ReloadButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            LoadTable(CurrentClass);
         }
 
         #endregion
@@ -333,19 +317,19 @@ namespace P.E.Diary.Widgets
 
     public class PupilRow
     {
-        public PupilRow(string surname, string name, string gender, string age, string height, string weight)
+        public PupilRow(string surname, string name, string gender, string date, string height, string weight)
         {
             Фамилия = surname;
             Имя = name;
             Пол = gender;
-            Возраст = age;
+            Дата_рождения = date;
             Высота = height;
             Вес = weight;
         }
         public string Фамилия { get; set; }
         public string Имя { get; set; }
         public string Пол { get; set; }
-        public string Возраст { get; set; }
+        public string Дата_рождения { get; set; }
         public string Высота { get; set; }
         public string Вес { get; set; }
     }

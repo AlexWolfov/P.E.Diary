@@ -20,9 +20,31 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class LeftMenu : UserControl
     {
+        public PupilsTable PupilsTable;
+        private Dictionary<string, SchoolClass> _classes;
+
         public LeftMenu()
         {
             InitializeComponent();
+            LoadClasses();
+        }
+
+        public void LoadClasses()
+        {
+            _classes = SqlReader.LoadClasses();
+            ClassesList.Items.Clear();
+            foreach (string key in _classes.Keys)
+            {
+                ClassesList.Items.Add(key);
+            }
+        }
+
+        private void ClassesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        { 
+            if (ClassesList.SelectedItem != null)
+            {
+                PupilsTable.LoadTable(_classes[ClassesList.SelectedItem.ToString()]);
+            }
         }
     }
 }

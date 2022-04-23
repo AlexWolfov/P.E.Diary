@@ -9,35 +9,19 @@
     <!--<DataGrid Height="122" Width="251"  ItemsSource="{Binding ListBoxItemCollection}" d:ItemsSource="{d:SampleData ItemCount=5}"/>-->
     <DataGrid x:Name="Table" Background="#FFFFFF" Height="Auto" Width="Auto" 
               ItemsSource="{Binding}" ColumnWidth="*" 
-              Loaded="Table_Loaded" CellEditEnding="Table_CellEditEnding"
+              CellEditEnding="Table_CellEditEnding"
               PreviewKeyDown="Table_PreviewKeyDown" AddingNewItem="Table_AddingNewItem">
         <DataGrid.ContextMenu>
             <ContextMenu Name="ContextMenuDeleteAddButtons" Opened="ContextMenuDeleteAddButtons_Opened">
-                <MenuItem Name="AddButton" Click="AddButton_Click" Header="Добавить ученика Ctrl+"/>
+                <MenuItem Name="AddButton" Click="AddButton_Click" Header="Добавить ученика Ctrl +"/>
                 <MenuItem Name="DeleteButton" Click="DeleteButton_Click" Header="Удалить ученика Delete"/>
+                <MenuItem Name="ReloadButton" Click="ReloadButton_Click" Header="Перезагрузить таблицу Ctrl R"/>
             </ContextMenu>
         </DataGrid.ContextMenu>
         <DataGrid.Columns/>
         <DataGrid.CellStyle>
             <Style TargetType="{x:Type DataGridCell}">
-                <Style.Triggers>
-                    <Trigger  Property="IsSelected" Value="true">
-                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                    </Trigger>
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
-                            <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=IsKeyboardFocusWithin}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-                </Style.Triggers>
+
             </Style>
         </DataGrid.CellStyle>
     </DataGrid>
