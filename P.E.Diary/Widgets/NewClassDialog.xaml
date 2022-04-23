@@ -18,7 +18,7 @@
         <Label Content="Новый класс" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="White" Grid.ColumnSpan="2" FontFamily="Segoe UI" IsEnabled="False" FontSize="18"/>
         <TextBox x:Name="NumberBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="0" Margin="0,75,0,0" Grid.RowSpan="2" TextChanged="NumberBox_TextChanged"/>
         <TextBox x:Name="LetterBox" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" TabIndex="1" Grid.RowSpan="2"/>
-        <Button x:Name="CreateClass" Content="Создать класс" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Background="#FFF6F6F6" Grid.ColumnSpan="2" Click="CreateClass_Click"/>
+        <Button x:Name="CreateClass" Content="Создать класс" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom" Background="#FFF6F6F6" Grid.ColumnSpan="2" Click="CreateClass_Click" FontSize="14"/>
         <Label Content="Номер" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="14"/>
         <Label Content="Буква" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" IsEnabled="False" Grid.Column="1" FontSize="14"/>
     </Grid>

@@ -4,12 +4,12 @@
     <projectFile>P.E.Diary/P.E.Diary.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="Полностью сделана таблица учеников. Сделан выбор классов">
+    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="Сделано добавление и удаление файлов">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewClassDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewClassDialog.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewClassDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewClassDialog.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/MainWindow.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewClassDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewClassDialog.xaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,7 +76,7 @@
       <workItem from="1650643568496" duration="6000" />
       <workItem from="1650704271601" duration="655000" />
       <workItem from="1650729652324" duration="55000" />
-      <workItem from="1650736836981" duration="759000" />
+      <workItem from="1650736836981" duration="1384000" />
     </task>
     <task id="LOCAL-00001" summary="Создание таблицы учеников">
       <created>1650641849123</created>
@@ -98,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650736865553</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Сделано добавление и удаление файлов">
+      <created>1650740934810</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650740934810</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +139,7 @@
     <MESSAGE value="Сделан интерфейс бокового меню и таблицы" />
     <MESSAGE value="Доделано боковое меню и таблица учеников" />
     <MESSAGE value="Полностью сделана таблица учеников. Сделан выбор классов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Полностью сделана таблица учеников. Сделан выбор классов" />
+    <MESSAGE value="Сделано добавление и удаление файлов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделано добавление и удаление файлов" />
   </component>
 </project>

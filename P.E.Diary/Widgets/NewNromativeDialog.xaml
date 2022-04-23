@@ -1,0 +1,119 @@
+﻿<Window x:Name="NormativeCreation" x:Class="P.E.Diary.Widgets.NewNromativeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:P.E.Diary.Widgets"
+        mc:Ignorable="d"
+        Title="Новый норматив" Height="459" Width="600" ResizeMode="CanMinimize">
+    <Grid Margin="0,0,0,4">
+        <Label Content="Новый норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
+        <StackPanel HorizontalAlignment="Center" Height="368" Margin="0,33,0,0" VerticalAlignment="Top" Width="580" Background="#FFE5E4E4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Название" Width="60" HorizontalAlignment="Left" 
+                       Margin="10,12,0,20" IsEnabled="False" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+                <TextBox x:Name="NameBox" TextWrapping="Wrap" 
+                         FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,2,10,13" TabIndex="0">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <Label Content="Категория" HorizontalAlignment="Left" IsEnabled="False" Margin="10,7,0,3"
+                       Grid.Column="0" Grid.Row="1"/>
+                <ComboBox x:Name="TypeSelection" Width="120" FontSize="10" Grid.Column="1" Margin="14,0,36,0" Grid.Row="1" TabIndex="1"/>
+                <Button x:Name="AddType" Content="Новая категория"  Grid.Column="1" Grid.Row="1"  Margin="146,1,46,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" VerticalAlignment="Top" TabIndex="2" />
+                <Label Content="Формула" HorizontalAlignment="Center" Margin="0,28,0,-28" IsEnabled="False" Grid.Row="3"/>
+                <TextBox x:Name="Formula" TextWrapping="Wrap" 
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,18,10,-38" TabIndex="4">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <Button x:Name="DeleteType" Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="129,1,59,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" VerticalAlignment="Top" TabIndex="3" />
+            </Grid>
+            <Label Content="Условные обозначения" Margin="0,60,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"/>
+
+
+        </StackPanel>
+        <Button x:Name="CreateNormative" Content="Создать норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Background="#FFF6F6F6" FontSize="14" TabIndex="5"/>
+        <Grid Height="187" Margin="40,237,40,0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="0" 
+                   Content="Параметр" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" 
+                   Content="Буква" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" 
+                   Content="Результат зачета" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="1" 
+                   Content="R" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="0" 
+                   Content="Вес" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="1" 
+                   Content="W" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="0" 
+                   Content="Рост" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="1" 
+                   Content="H" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="4" Grid.Column="0" 
+                   Content="Пол" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="4" Grid.Column="1" 
+                   Content="S" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="5" Grid.Column="0" 
+                   Content="Возраст" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,129,0" />
+            <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="5" Grid.Column="1" 
+                   Content="A" IsEnabled="False" HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" Margin="390,0,0,0"/>
+        </Grid>
+
+    </Grid>
+</Window>
