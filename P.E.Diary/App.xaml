@@ -7,6 +7,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary
+                  Source="pack://application:,,,/WPFUI;component/Styles/Theme/Light.xaml" />
+                <ResourceDictionary
+                  Source="pack://application:,,,/WPFUI;component/Styles/WPFUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

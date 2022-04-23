@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <ControlTemplate x:Key="SmallButtonTemplate" TargetType="Button">
+
+    <ControlTemplate x:Key="SmallButtonTemplate" TargetType="Button" >
         <Border BorderBrush="Aquamarine" BorderThickness="1" CornerRadius="2"
                     TextBlock.Foreground="White">
             <Border.Background>
@@ -15,7 +15,8 @@
             <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
         </Border>
     </ControlTemplate>
-    
-    
 
+    <Style x:Key="SmallButtonStyle" TargetType="Button">
+        
+    </Style>
 </ResourceDictionary>

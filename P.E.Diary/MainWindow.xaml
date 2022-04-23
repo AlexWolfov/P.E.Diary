@@ -4,10 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P.E.Diary"
-        xmlns:Widgets="clr-namespace:P.E.Diary.Widgets" x:Class="P.E.Diary.MainWindow"
+        xmlns:Widgets="clr-namespace:P.E.Diary.Widgets" x:Name="Window" x:Class="P.E.Diary.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Widgets:PupilsTable HorizontalAlignment="Left" Height="207" Margin="153,87,0,0" VerticalAlignment="Top" Width="289"/>
+        Title="MainWindow" Height="620" Width="800">
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Widgets:LeftMenu x:Name="LeftMenu" HorizontalAlignment="Center" 
+                          Margin="0,5,0,0" />
+        <!--Border x:Name="Body" HorizontalAlignment="Left" 
+                          Margin="0,0,0,0" VerticalAlignment="Top"
+            Grid.Column="1"!-->
+            <Widgets:PupilsTable x:Name="PupilsTable" HorizontalAlignment="Left" 
+                                 Grid.Column="1"/>
+        <!--/Border!-->
     </Grid>
 </Window>
+
