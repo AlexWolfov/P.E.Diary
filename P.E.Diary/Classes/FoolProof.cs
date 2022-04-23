@@ -1,7 +1,7 @@
 using System;
 using System.Windows;
 
-namespace P.E._Helper;
+namespace P.E.Diary;
 
 public class FoolProof
 {

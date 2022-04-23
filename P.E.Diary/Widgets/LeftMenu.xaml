@@ -6,43 +6,55 @@
              xmlns:local="clr-namespace:P.E.Diary.Widgets" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
              mc:Ignorable="d" 
             
-             Height="Auto" Width="80">
+             Height="Auto" Width="90">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel x:Name ="Back" Background="White" Height="Auto" Grid.RowSpan="2"/>
         <ComboBox Margin="4,0,4,0"/>
         <wpfui:NavigationStore
                 x:Name="RootNavigation"
                 Grid.Column="0"
+                Width="78"
                 Margin="6,0,6,0"
-                Frame="{Binding ElementName=RootFrame}"
                 Grid.Row="1">
             <wpfui:NavigationStore.Items>
                 <wpfui:NavigationItem
+                        Width="78"
                         Content="Добавить"
                         Icon="AddCircle20"
                         Tag="add" />
                 <wpfui:NavigationItem
+                        Width="78"
                         Content="Удалить"
                         Icon="Delete20"
                         Tag="delete" />
                 <wpfui:NavigationItem
+                        Width="78"
+                        Content="Нормативы"
+                        Icon="SportSoccer20"
+                        Tag="apply" />
+                <wpfui:NavigationItem
+                        Width="78"
                         Content="Зачет"
                         Icon="Sport20"
                         Tag="apply" />
                 <wpfui:NavigationItem
+                        Width="78"
                         Content="Статистика"
                         Icon="DataArea20"
                         Tag="stats" />
             </wpfui:NavigationStore.Items>
             <wpfui:NavigationStore.Footer>
                 <wpfui:NavigationItem
+                        Width="78"
                         Content="Загрузка"
                         Icon="DatabaseArrowUp20"
                         Tag="load" />
             </wpfui:NavigationStore.Footer>
         </wpfui:NavigationStore>
     </Grid>
+   
 </UserControl>

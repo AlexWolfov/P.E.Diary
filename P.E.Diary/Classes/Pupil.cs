@@ -1,7 +1,7 @@
 ﻿using System;
 using NCalc;
 
-namespace P.E._Helper
+namespace P.E.Diary
 {
     public class Pupil
     {

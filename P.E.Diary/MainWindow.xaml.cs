@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace P.E.Diary
 {
@@ -22,6 +23,15 @@ namespace P.E.Diary
     {
         public MainWindow()
         {
+            if (!File.Exists(".\\Database"))
+            {
+                SqlReader.CreateDataBase();
+            }
+            else
+            {
+                File.Copy(".\\Database", ".\\Database save", true);
+            }
+            Corruptor.LoadNames();
             InitializeComponent();
         }
     }

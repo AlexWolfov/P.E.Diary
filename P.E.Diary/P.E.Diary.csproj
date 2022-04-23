@@ -7,9 +7,6 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Widgets\delete.png" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ncalc" Version="1.3.8" />
@@ -18,11 +15,5 @@
     <PackageReference Include="WPF-UI" Version="1.2.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Widgets\delete.png" />
-    <Resource Include="Widgets\add.png" />
-    <Resource Include="Widgets\sport.png" />
-    <Resource Include="Widgets\statistics.png" />
-  </ItemGroup>
 
 </Project>

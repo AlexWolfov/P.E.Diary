@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace P.E._Helper
+namespace P.E.Diary
 {
     public class SchoolClass
     {
