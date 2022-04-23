@@ -25,12 +25,14 @@
                         Width="78"
                         Content="Добавить"
                         Icon="AddCircle20"
-                        Tag="add" />
+                        Tag="add" 
+                        Click="AddButton_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Удалить"
                         Icon="Delete20"
-                        Tag="delete" />
+                        Tag="delete"
+                        Click="DeleteButton_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Нормативы"

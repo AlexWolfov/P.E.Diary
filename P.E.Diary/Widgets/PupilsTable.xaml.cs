@@ -20,6 +20,12 @@ namespace P.E.Diary.Widgets
             InitializeComponent();
         }
 
+        public void ClearTable()
+        {
+            List<PupilRow> pupilRows = new List<PupilRow>();
+            Table.ItemsSource = pupilRows;
+        }
+
 
         public void LoadTable(SchoolClass newClass)
         {

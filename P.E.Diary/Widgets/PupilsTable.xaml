@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:P.E.Diary.Widgets"
              mc:Ignorable="d" 
              Height="Auto" Width="Auto">
-    <!--<DataGrid Height="122" Width="251"  ItemsSource="{Binding ListBoxItemCollection}" d:ItemsSource="{d:SampleData ItemCount=5}"/>-->
     <DataGrid x:Name="Table" Background="#FFFFFF" Height="Auto" Width="Auto" 
               ItemsSource="{Binding}" ColumnWidth="*" 
               CellEditEnding="Table_CellEditEnding"

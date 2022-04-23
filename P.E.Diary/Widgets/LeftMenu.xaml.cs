@@ -20,6 +20,7 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class LeftMenu : UserControl
     {
+        public MainWindow MainWindow;
         public PupilsTable PupilsTable;
         private Dictionary<string, SchoolClass> _classes;
 
@@ -39,12 +40,41 @@ namespace P.E.Diary.Widgets
             }
         }
 
+        public void AddClass(SchoolClass schoolClass)  //добавляем школьный класс в соновную форму
+        {
+            _classes.Add(schoolClass.Grade.ToString() + ' ' + schoolClass.Letter, schoolClass);
+        }
+
+        private void DeleteCurrentClass()
+        {
+            if (FoolProof.DeletionProtection(ClassesList.SelectedItem.ToString()))
+            {
+                var classInfo = ClassesList.SelectedItem.ToString().Split(' '); //номер и буква класса
+                SqlReader.DeleteClass(Convert.ToInt32(classInfo[0]), classInfo[1]);
+                _classes.Remove(classInfo[0] + ' ' + classInfo[1]); //Удаляем из словаря класс с текущим ключем
+                ClassesList.Items.Remove(ClassesList.SelectedItem);
+                PupilsTable.ClearTable();
+            }
+        }
+
+
         private void ClassesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { 
             if (ClassesList.SelectedItem != null)
             {
                 PupilsTable.LoadTable(_classes[ClassesList.SelectedItem.ToString()]);
             }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewClassDialog newClassDialog = new NewClassDialog();
+            newClassDialog.MainWindow = MainWindow;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteCurrentClass();
         }
     }
 }
