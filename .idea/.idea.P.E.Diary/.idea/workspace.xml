@@ -4,29 +4,26 @@
     <projectFile>P.E.Diary/P.E.Diary.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="">
+    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="Добавлено создание норматива. Добавить список нормативов">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/LeftMenu.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesLeftMenu.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesLeftMenu.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/PupilsTable.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/PupilsTable.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewClassDialog.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewClassDialog.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/MainWindow.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/LeftMenu.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewClassDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,6 +73,7 @@
       <workItem from="1650704271601" duration="655000" />
       <workItem from="1650729652324" duration="55000" />
       <workItem from="1650736836981" duration="1424000" />
+      <workItem from="1650783042201" duration="651000" />
     </task>
     <task id="LOCAL-00001" summary="Создание таблицы учеников">
       <created>1650641849123</created>
@@ -119,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650745584263</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Добавлено создание норматива. Добавить список нормативов">
+      <created>1650783089840</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650783089840</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +152,7 @@
     <MESSAGE value="Полностью сделана таблица учеников. Сделан выбор классов" />
     <MESSAGE value="Сделано добавление и удаление файлов" />
     <MESSAGE value="Начато создание формы для создания нового норматива" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начато создание формы для создания нового норматива" />
+    <MESSAGE value="Добавлено создание норматива. Добавить список нормативов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлено создание норматива. Добавить список нормативов" />
   </component>
 </project>

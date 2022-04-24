@@ -20,6 +20,7 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class NormativesLeftMenu : UserControl
     {
+        public NormativesList NormativesList;
         public NormativesLeftMenu()
         {
             InitializeComponent();
@@ -27,12 +28,12 @@ namespace P.E.Diary.Widgets
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NewNormativeDialog newNormativeDialog = new NewNormativeDialog(NormativesList);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NormativesList.DeleteNode();
         }
          
         private void EditButton_Click(object sender, RoutedEventArgs e)

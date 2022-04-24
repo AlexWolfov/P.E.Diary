@@ -19,9 +19,13 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class NewNormativeDialog : Window
     {
-        public NewNormativeDialog()
+        private NormativesList _normativesList;
+
+        public NewNormativeDialog(NormativesList normativesList)
         {
+            _normativesList = normativesList;
             InitializeComponent();
+            Show();
         }
 
         private void CreateNewNormative()

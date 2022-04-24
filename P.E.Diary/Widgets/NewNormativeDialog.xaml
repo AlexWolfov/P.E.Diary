@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P.E.Diary.Widgets" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         mc:Ignorable="d"
-        Title="Новый норматив" Height="416" Width="600" ResizeMode="CanMinimize">
+        Title="Новый норматив" Height="441" Width="600" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,4">
         <Label Content="Новый норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
         <StackPanel HorizontalAlignment="Center" Height="323" Margin="0,33,0,0" VerticalAlignment="Top" Width="580" Background="#FFE5E4E4">
@@ -45,7 +45,7 @@
                               Click="NewType_Click"/>
                 <Label Content="Формула" HorizontalAlignment="Left" Margin="13,16,0,16" IsEnabled="False" Grid.Row="3"/>
                 <wpfui:TextBox x:Name="Formula" TextWrapping="Wrap" 
-                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,10,10,10" TabIndex="4" TextChanged="Formula_TextChanged">
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,10,10,10" TabIndex="4">
                     <TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>

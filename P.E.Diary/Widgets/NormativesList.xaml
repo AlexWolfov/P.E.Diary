@@ -4,9 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P.E.Diary.Widgets"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+             mc:Ignorable="d" Width="Auto" Height="Auto">
     <Grid>
-            
+        <TreeView x:Name="MainList" Background="{x:Null}" BorderBrush="Black" Height="Auto" Width="Auto">
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Blue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.Resources>
+        </TreeView>
     </Grid>
 </UserControl>

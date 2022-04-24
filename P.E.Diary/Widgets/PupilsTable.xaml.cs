@@ -59,10 +59,10 @@ namespace P.E.Diary.Widgets
                     return selectedItem.Дата_рождения;
                     break;
                 case "Высота":
-                    return selectedItem.Высота;
+                    return selectedItem.Рост;
                     break;
                 case "Вес":
-                    return selectedItem.Вес;
+                    return selectedItem.Масса;
                     break;
                 default:
                     break;
@@ -98,10 +98,10 @@ namespace P.E.Diary.Widgets
                     selectedItem.Дата_рождения = newData;
                     break;
                 case "Высота":
-                    selectedItem.Высота = newData;
+                    selectedItem.Рост = newData;
                     break;
                 case "Вес":
-                    selectedItem.Вес = newData;
+                    selectedItem.Масса = newData;
                     break;
                 default:
                     break;
@@ -329,15 +329,15 @@ namespace P.E.Diary.Widgets
             Имя = name;
             Пол = gender;
             Дата_рождения = date;
-            Высота = height;
-            Вес = weight;
+            Рост = height;
+            Масса = weight;
         }
         public string Фамилия { get; set; }
         public string Имя { get; set; }
         public string Пол { get; set; }
         public string Дата_рождения { get; set; }
-        public string Высота { get; set; }
-        public string Вес { get; set; }
+        public string Рост { get; set; }
+        public string Масса { get; set; }
     }
 }
 

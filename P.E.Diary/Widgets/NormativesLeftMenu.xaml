@@ -20,7 +20,7 @@
                         Content="Добавить"
                         Icon="AddCircle20"
                         Tag="add" 
-                        Click="AddButtonClick"/>
+                        Click="AddButton_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Удалить"

@@ -26,7 +26,7 @@ namespace P.E.Diary.Widgets
             InitializeComponent();
         }
 
-        private void Create_Click(object sender, EventArgs e)
+        private void CreateClass_Click(object sender, EventArgs e)
         {
             if (NameBox.Text != "")
             {

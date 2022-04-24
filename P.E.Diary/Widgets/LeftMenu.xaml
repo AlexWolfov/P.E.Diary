@@ -37,7 +37,8 @@
                         Width="78"
                         Content="Нормативы"
                         Icon="SportSoccer20"
-                        Tag="normatives" />
+                        Tag="normatives" 
+                        Click="Normatives_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Зачет"

@@ -75,5 +75,10 @@ namespace P.E.Diary.Widgets
         {
             DeleteCurrentClass();
         }
+
+        private void Normatives_Click(object sender, RoutedEventArgs e)
+        {
+            NormativesForm normativesForm = new NormativesForm();
+        }
     }
 }

@@ -1,20 +1,17 @@
-﻿<Window
+﻿<Window x:Class="P.E.Diary.NormativesForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:P.E.Diary"
-        xmlns:Widgets="clr-namespace:P.E.Diary.Widgets" x:Name="Window" x:Class="P.E.Diary.MainWindow"
+        xmlns:local="clr-namespace:P.E.Diary" xmlns:Widgets="clr-namespace:P.E.Diary.Widgets"
         mc:Ignorable="d"
-        Title="Дневник учителя" Height="620" Width="800">
-    <Grid x:Name="MainGrid">
+        Title="Нормативы" Height="450" Width="508">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Widgets:LeftMenu x:Name="LeftMenu" HorizontalAlignment="Center" 
-                          Margin="0,5,0,0" />
-        <Widgets:PupilsTable x:Name="PupilsTable" Margin="0,0,0,0" Grid.Column="1"/>
+        <Widgets:NormativesLeftMenu x:Name ="LeftMenu"/>
+        <Widgets:NormativesList x:Name ="NormativesList" Grid.Column="1" Margin="5,0,5,0" HorizontalAlignment="Stretch"/>
     </Grid>
 </Window>
-
