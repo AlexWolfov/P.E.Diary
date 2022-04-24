@@ -49,7 +49,7 @@ namespace P.E.Diary.Widgets
             LoadNormatives();
         }
 
-        private string GetSelectedNodeText()
+        public string GetSelectedNodeText()
         {
             return ((TreeViewItem)MainList.SelectedItem).Header.ToString();
         }
@@ -139,7 +139,7 @@ namespace P.E.Diary.Widgets
         
         private void TypeItem_Edit(object sender, MouseButtonEventArgs e)
         {
-
+            EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
         }
 
         private void NormativeItem_Edit(object sender, MouseButtonEventArgs e)
@@ -158,7 +158,7 @@ namespace P.E.Diary.Widgets
             {
                 if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
                 {
-                    //сделать здесь вывзов окна для изменения категории
+                    EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
                 }
                 else //если родителя нет, то это норматив
                 {

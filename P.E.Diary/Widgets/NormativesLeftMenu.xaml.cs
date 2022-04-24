@@ -42,7 +42,7 @@ namespace P.E.Diary.Widgets
             {
                 if (((TreeViewItem)NormativesList.MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
                 {
-                    //сделать здесь вывзов окна для изменения категории
+                    EditTypeDialog editTypeDialog = new EditTypeDialog(NormativesList, NormativesList.GetSelectedNodeText());
                 }
                 else //если родителя нет, то это норматив
                 {
