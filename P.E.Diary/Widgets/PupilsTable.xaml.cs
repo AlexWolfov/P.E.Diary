@@ -13,7 +13,6 @@ namespace P.E.Diary.Widgets
     public partial class PupilsTable : UserControl
     {
         public SchoolClass CurrentClass;
-        private bool _cellEditIsCorrect = false;
 
         public PupilsTable()
         {
@@ -108,8 +107,15 @@ namespace P.E.Diary.Widgets
             }
         }
 
+        private void SetSelectedRowValue(string newData)
+        {
+            int columnIndex = GetCurrentCellAdressAxesX();
+            int rowIndex = GetCurrentCellAdressAxesY();
+            EditCellInRow(rowIndex, columnIndex, newData);
+        }
 
-        private void EditRow(string value)
+
+        private void EditRow(string value, DataGridCellEditEndingEventArgs e)
         {
             if (CurrentClass != null && GetCurrentCellAdressAxesY() != -1)
             {
@@ -130,6 +136,7 @@ namespace P.E.Diary.Widgets
                         else
                         {
                             FoolProof.UniversalProtection("Введите М либо Ж (русской раскладкой)");
+                            e.Cancel = true;
                         }
                         break;
                     case "Дата_рождения":
@@ -138,13 +145,22 @@ namespace P.E.Diary.Widgets
                         {
                             pupil.Birthday = date;
                         }
-                        _cellEditIsCorrect = true;
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                         break;
                     case "Рост":
-                        FoolProof.SetInt(ref pupil.Height, value);
+                        if (!FoolProof.SetInt(ref pupil.Height, value))
+                        {
+                            e.Cancel = true;
+                        }
                         break;
                     case "Масса":
-                        FoolProof.SetInt(ref pupil.Weight, value);
+                        if (!FoolProof.SetInt(ref pupil.Weight, value))
+                        {
+                            e.Cancel = true;
+                        }
                         break;
                     default:
                         break;
@@ -199,7 +215,7 @@ namespace P.E.Diary.Widgets
         private void Table_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             string newValue = (e.EditingElement as TextBox).Text;
-            EditRow(newValue);
+            EditRow(newValue, e);
         }
 
         private void Table_AddingNewItem(object sender, AddingNewItemEventArgs e)

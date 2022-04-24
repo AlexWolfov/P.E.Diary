@@ -80,5 +80,10 @@ namespace P.E.Diary.Widgets
         {
             NormativesForm normativesForm = new NormativesForm();
         }
+
+        private void ApplyNormative_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

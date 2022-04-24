@@ -5,7 +5,7 @@ namespace P.E.Diary;
 
 public class FoolProof
 {
-    public static void SetInt(ref int target, string value)
+    public static bool SetInt(ref int target, string value)
     {
         int oldValue = target;
         if (!int.TryParse(value, out target))
@@ -13,7 +13,9 @@ public class FoolProof
             MessageBox.Show("Неверный формат ввода", "Ошибка",
                 MessageBoxButton.OK, MessageBoxImage.Stop);
             target = oldValue;
+            return false;
         }
+        return true;
     }
     
     public static string ReturnDate(string target, string value)

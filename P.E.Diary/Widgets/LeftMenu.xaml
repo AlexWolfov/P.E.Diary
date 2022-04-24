@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:P.E.Diary.Widgets" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
              mc:Ignorable="d" 
-            
              Height="Auto" Width="90">
     <Grid>
         <Grid.RowDefinitions>
@@ -43,7 +42,8 @@
                         Width="78"
                         Content="Зачет"
                         Icon="Sport20"
-                        Tag="apply" />
+                        Tag="apply"
+                        Click="ApplyNormative_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Статистика"
