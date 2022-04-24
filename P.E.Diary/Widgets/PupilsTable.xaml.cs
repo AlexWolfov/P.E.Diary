@@ -58,10 +58,10 @@ namespace P.E.Diary.Widgets
                 case "Дата_рождения":
                     return selectedItem.Дата_рождения;
                     break;
-                case "Высота":
+                case "Рост":
                     return selectedItem.Рост;
                     break;
-                case "Вес":
+                case "Масса":
                     return selectedItem.Масса;
                     break;
                 default:
@@ -97,10 +97,10 @@ namespace P.E.Diary.Widgets
                 case "Дата_рождения":
                     selectedItem.Дата_рождения = newData;
                     break;
-                case "Высота":
+                case "Рост":
                     selectedItem.Рост = newData;
                     break;
-                case "Вес":
+                case "Масса":
                     selectedItem.Масса = newData;
                     break;
                 default:
@@ -140,10 +140,10 @@ namespace P.E.Diary.Widgets
                         }
                         _cellEditIsCorrect = true;
                         break;
-                    case "Высота":
+                    case "Рост":
                         FoolProof.SetInt(ref pupil.Height, value);
                         break;
-                    case "Вес":
+                    case "Масса":
                         FoolProof.SetInt(ref pupil.Weight, value);
                         break;
                     default:

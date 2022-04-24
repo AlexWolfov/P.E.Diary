@@ -114,7 +114,12 @@ namespace P.E.Diary.Widgets
                 {
                     try
                     {
+                        item.MouseDoubleClick += TypeItem_Edit;
                         item.ItemsSource = normativesNamesByTypes[item.Header.ToString()];
+                        foreach (TreeViewItem normativeItem in item.Items)
+                        {
+                            normativeItem.MouseDoubleClick += NormativeItem_Edit;
+                        }
                     }
                     catch (KeyNotFoundException ex)
                     { }
@@ -131,23 +136,80 @@ namespace P.E.Diary.Widgets
         #endregion
 
         #region Events
-        /*private void NormativesList_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        
+        private void TypeItem_Edit(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void NormativeItem_Edit(object sender, MouseButtonEventArgs e)
+        {
+            EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
+        }
+
+        private void ContextMenuAddButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NewNormativeDialog newNormativeDialog = new NewNormativeDialog(this);
+        }
+        
+        private void ContextMenuEditButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (MainList.SelectedItem != null)
             {
-                if (((TreeViewItem)MainList.SelectedItem).Parent == null) //если родителя нет, то это категория
+                if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
                 {
-                    EditType editType = new EditType(MainList.SelectedValue.ToString(), this);
-                    editType.Show();
+                    //сделать здесь вывзов окна для изменения категории
                 }
-                else //если родитель есть, то это норматив
+                else //если родителя нет, то это норматив
                 {
-                    EditNormative editNormativeForm = new EditNormative(
-                        Normatives[MainList.SelectedValue.ToString()], this);
-                    editNormativeForm.Show();
+                    EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
                 }
             }
-        }*/
+        } 
+        
+        private void ContextMenuDeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DeleteNode();
+        }
+
+        private void ContextMenuReloadButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            LoadNormatives();
+        }
+
+        private void ContextMenuDeleteAddButtons_Opened(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (MainList.SelectedItem == null)
+            {
+                foreach (MenuItem item in ContextMenuDeleteAddButtons.Items)
+                {
+                    if (item.Name == "DeleteButton")
+                    {
+                        item.IsEnabled = false;
+                    }
+                    if (item.Name == "EditButton")
+                    {
+                        item.IsEnabled = false;
+                    }
+                }
+            }
+            else
+            {
+                foreach (MenuItem item in ContextMenuDeleteAddButtons.Items)
+                {
+                    if (item.Name == "DeleteButton")
+                    {
+                        item.IsEnabled = true;
+                    }
+                    if (item.Name == "EditButton")
+                    {
+                        item.IsEnabled = true;
+                    }
+                }
+            }
+        }
+
+
         #endregion
     }
 }

@@ -20,9 +20,17 @@ namespace P.E.Diary.Widgets
     public partial class NewTypeDialog : Window
     {
         private NewNormativeDialog _newNormativeDialog;
+        private EditNormativeDialog _editNormativeDialog;
+
         public NewTypeDialog(NewNormativeDialog newNormativeDialog)
         {
             _newNormativeDialog = newNormativeDialog;
+            InitializeComponent();
+        }
+
+        public NewTypeDialog(EditNormativeDialog editNormativeDialog)
+        {
+            _editNormativeDialog = editNormativeDialog;
             InitializeComponent();
         }
 
@@ -37,9 +45,8 @@ namespace P.E.Diary.Widgets
                 }
                 else
                 {
-                    //_editNormativeForm.LoadTypes();
+                    _editNormativeDialog.LoadTypes();
                 }
-
                 Close();
             }
             else

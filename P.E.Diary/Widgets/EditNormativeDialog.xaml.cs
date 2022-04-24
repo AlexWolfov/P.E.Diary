@@ -15,34 +15,43 @@ using System.Windows.Shapes;
 namespace P.E.Diary.Widgets
 {
     /// <summary>
-    /// Interaction logic for NewNormativeDialog.xaml
+    /// Interaction logic for EditNormativeDialog.xaml
     /// </summary>
-    public partial class NewNormativeDialog : Window
+    public partial class EditNormativeDialog : Window
     {
-        private NormativesList _normativesList;
 
-        public NewNormativeDialog(NormativesList normativesList)
+        private NormativesList _normativesList;
+        private Normative _editingNormative;
+
+        public EditNormativeDialog(NormativesList normativesList, Normative normative)
         {
             _normativesList = normativesList;
+            _editingNormative = normative;
             InitializeComponent();
             LoadTypes();
+            InsertData();
             Show();
+        }
+
+        private void InsertData()
+        {
+            NameBox.Text = _editingNormative.Name;
+            Formula.Text = _editingNormative.Formula;
         }
 
         private void CreateNewNormative()
         {
-            Normative normative = new Normative();
-            normative.Name = NameBox.Text;
-            normative.Formula = Formula.Text;
+            _editingNormative.Name = NameBox.Text;
+            _editingNormative.Formula = Formula.Text;
             if (TypeSelection.SelectedItem != null)
             {
-                normative.Type = TypeSelection.SelectedItem.ToString();
+                _editingNormative.Type = TypeSelection.SelectedItem.ToString();
             }
             else
             {
-                normative.Type = "Без категории";
+                _editingNormative.Type = "Без категории";
             }
-            SqlReader.CreateNormative(normative);
+            SqlReader.EditNormative(_editingNormative);
             _normativesList.LoadNormatives();
         }
 
@@ -69,7 +78,7 @@ namespace P.E.Diary.Widgets
         {
             if (TypeSelection.SelectedItem != null)
             {
-                if (FoolProof.DeletionProtection(TypeSelection.SelectedItem.ToString()));
+                if (FoolProof.DeletionProtection(TypeSelection.SelectedItem.ToString())) ;
                 {
                     SqlReader.DeleteType(TypeSelection.SelectedItem.ToString());
                     _normativesList.LoadNormatives();
@@ -82,7 +91,7 @@ namespace P.E.Diary.Widgets
             }
         }
 
-        private void CreateNormative_Click(object sender, RoutedEventArgs e)
+        private void EditNormative_Click(object sender, RoutedEventArgs e)
         {
             if (NameBox.Text != "" && Formula.Text != "")
             {

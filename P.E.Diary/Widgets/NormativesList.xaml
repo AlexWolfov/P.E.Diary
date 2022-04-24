@@ -17,6 +17,14 @@
                     </Style.Triggers>
                 </Style>
             </TreeView.Resources>
+            <TreeView.ContextMenu>
+                <ContextMenu Name="ContextMenuDeleteAddButtons" Opened="ContextMenuDeleteAddButtons_Opened">
+                    <MenuItem Name="AddButton" Click="ContextMenuAddButton_Click" Header="Добавить норматив Ctrl +"/>
+                    <MenuItem Name="EditButton" Click="ContextMenuEditButton_Click" Header="Изменить Ctrl E"/>
+                    <MenuItem Name="DeleteButton" Click="ContextMenuDeleteButton_Click" Header="Удалить Delete"/>
+                    <MenuItem Name="ReloadButton" Click="ContextMenuReloadButton_Click" Header="Перезагрузить список Ctrl R"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
         </TreeView>
     </Grid>
 </UserControl>

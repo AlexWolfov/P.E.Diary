@@ -4,9 +4,17 @@
     <projectFile>P.E.Diary/P.E.Diary.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="Реализовано создание нормативов">
+    <list default="true" id="4efa782a-2549-41f8-bcad-980ca6a39154" name="Changes" comment="Исправлен баг с ошибкой при удалении норматива">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.P.E.Diary/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Classes/SQL-Reader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NewTypeDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesLeftMenu.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesLeftMenu.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/NormativesList.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P.E.Diary/Widgets/PupilsTable.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/P.E.Diary/Widgets/PupilsTable.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,10 +22,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewNormativeDialog.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesList.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesLeftMenu.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesList.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesList.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Classes/SQL-Reader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewTypeDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesList.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewNormativeDialog.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NewTypeDialog.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/PupilsTable.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/mikha/VisualStudioProjects/WPF/P.E.Diary/P.E.Diary/Widgets/NormativesList.xaml.cs" root0="SKIP_HIGHLIGHTING" />
@@ -70,7 +87,7 @@
       <workItem from="1650704271601" duration="655000" />
       <workItem from="1650729652324" duration="55000" />
       <workItem from="1650736836981" duration="1424000" />
-      <workItem from="1650783042201" duration="695000" />
+      <workItem from="1650783042201" duration="2513000" />
     </task>
     <task id="LOCAL-00001" summary="Создание таблицы учеников">
       <created>1650641849123</created>
@@ -128,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650807523397</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Исправлен баг с ошибкой при удалении норматива">
+      <created>1650808250214</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650808250214</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +182,7 @@
     <MESSAGE value="Начато создание формы для создания нового норматива" />
     <MESSAGE value="Добавлено создание норматива. Добавить список нормативов" />
     <MESSAGE value="Реализовано создание нормативов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализовано создание нормативов" />
+    <MESSAGE value="Исправлен баг с ошибкой при удалении норматива" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлен баг с ошибкой при удалении норматива" />
   </component>
 </project>
