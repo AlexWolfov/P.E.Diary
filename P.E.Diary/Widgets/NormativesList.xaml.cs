@@ -71,11 +71,11 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection(GetSelectedNodeText()))
                 {
-                    if (((TreeViewItem) MainList.SelectedItem).Parent.GetType() == MainList.GetType()) //если родителя - сам TreeView, то это категория
+                    if (((TreeViewItem) MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
                     {
                         DeleteSelectedType();
                     }
-                    else //если родитель -  другой узел TreeView, то это норматив
+                    else //если родителя нет, то это норматив
                     {
                         DeleteSelectedNormative();
                     }
@@ -98,16 +98,16 @@ namespace P.E.Diary.Widgets
                     newItem.Header = type;
                     normativesList.MainList.Items.Add(newItem);
                 }
-                Dictionary<string, List<string>> normativesNamesByTypes = new Dictionary<string, List<string>>(); //список имен нормативов по категориям
+                Dictionary<string, List<TreeViewItem>> normativesNamesByTypes = new Dictionary<string, List<TreeViewItem>>(); //словарь нодов с именами нормативов по катериям
                 foreach (Normative normative in Normatives.Values)
                 {
                    try
                     {
-                        normativesNamesByTypes[normative.Type].Add(normative.Name);
+                        normativesNamesByTypes[normative.Type].Add(new TreeViewItem { Header = normative.Name });
                     }
                     catch(KeyNotFoundException ex) //если еще нет ключа
                     {
-                        normativesNamesByTypes.Add(normative.Type, new List<string> {normative.Name});
+                        normativesNamesByTypes.Add(normative.Type, new List<TreeViewItem> { new TreeViewItem { Header = normative.Name} });
                     }
                 }
                 foreach (TreeViewItem item in normativesList.MainList.Items)
