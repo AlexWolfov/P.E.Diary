@@ -19,10 +19,11 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class NewClassDialog : Window
     {
-        public MainWindow MainWindow;
+        private MainWindow _mainWindow;
 
-        public NewClassDialog()
+        public NewClassDialog(MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
             Show();
         }
@@ -34,9 +35,9 @@ namespace P.E.Diary.Widgets
                 SqlReader.NewClass(Convert.ToInt32(NumberBox.Text),
                     LetterBox.Text); //добавляем школьный класс с нашими данными в БД
                 string key = NumberBox.Text + " " + LetterBox.Text;
-                MainWindow.LeftMenu.AddClass(new SchoolClass(Convert.ToInt32(NumberBox.Text), LetterBox.Text,
+                _mainWindow.LeftMenu.AddClass(new SchoolClass(Convert.ToInt32(NumberBox.Text), LetterBox.Text,
                     new List<Pupil>())); //добавляем наш школьный класс в основную форму
-                MainWindow.LeftMenu.LoadClasses();
+                _mainWindow.LeftMenu.LoadClasses();
                 Close();
             }
             else

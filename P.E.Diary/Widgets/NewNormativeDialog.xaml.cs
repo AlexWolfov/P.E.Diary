@@ -15,24 +15,23 @@ using System.Windows.Shapes;
 namespace P.E.Diary.Widgets
 {
     /// <summary>
-    /// Interaction logic for NewNromativeDialog.xaml
+    /// Interaction logic for NewNormativeDialog.xaml
     /// </summary>
-    public partial class NewNromativeDialog : Window
+    public partial class NewNormativeDialog : Window
     {
-        public NewNromativeDialog()
+        public NewNormativeDialog()
         {
             InitializeComponent();
         }
 
-
-        private void CreateNormative()
+        private void CreateNewNormative()
         {
             Normative normative = new Normative();
             normative.Name = NameBox.Text;
             normative.Formula = Formula.Text;
-            if (Types.SelectedItem != null)
+            if (TypeSelection.SelectedItem != null)
             {
-                normative.Type = Types.SelectedItem.ToString();
+                normative.Type = TypeSelection.SelectedItem.ToString();
             }
             else
             {
@@ -44,18 +43,22 @@ namespace P.E.Diary.Widgets
 
         public void LoadTypes()
         {
-            if ((Types != null))
+            if ((TypeSelection != null))
             {
-                Types.Items.Clear();
+                TypeSelection.Items.Clear();
             }
-            Types.Items.AddRange(SqlReader.LoadTypes().ToArray()); //загружаем список типов
+            List<string> typesList = SqlReader.LoadTypes();
+            foreach (string typeName in typesList)
+            {
+                TypeSelection.Items.Add(typeName);
+            }
         }
 
         private void Create_Click(object sender, EventArgs e)
         {
             if (NameBox.Text != "" && Formula.Text != "")
             {
-                CreateNormative();
+                CreateNewNormative();
                 Close();
             }
             else
@@ -66,17 +69,20 @@ namespace P.E.Diary.Widgets
 
         private void NewType_Click(object sender, EventArgs e)
         {
-            NewType newTypeForm = new NewType(this);
+            NewTypeDialog newTypeForm = new NewTypeDialog(this);
             newTypeForm.Show();
         }
 
         private void DeleteType_Click(object sender, EventArgs e)
         {
-            if (Types.SelectedItem != null)
+            if (TypeSelection.SelectedItem != null)
             {
-                SqlReader.DeleteType(Types.SelectedItem.ToString());
-                SqlReader.LoadNormatives();
-                LoadTypes();
+                if (FoolProof.DeletionProtection(TypeSelection.SelectedItem.ToString()));
+                {
+                    SqlReader.DeleteType(TypeSelection.SelectedItem.ToString());
+                    SqlReader.LoadNormatives();
+                    LoadTypes();
+                }
             }
             else
             {

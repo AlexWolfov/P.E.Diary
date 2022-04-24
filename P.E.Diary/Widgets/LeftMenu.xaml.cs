@@ -68,8 +68,7 @@ namespace P.E.Diary.Widgets
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            NewClassDialog newClassDialog = new NewClassDialog();
-            newClassDialog.MainWindow = MainWindow;
+            NewClassDialog newClassDialog = new NewClassDialog(MainWindow);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

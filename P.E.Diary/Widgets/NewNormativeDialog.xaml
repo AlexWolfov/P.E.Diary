@@ -1,14 +1,14 @@
-﻿<Window x:Name="NormativeCreation" x:Class="P.E.Diary.Widgets.NewNromativeDialog"
+﻿<Window x:Name="NormativeCreation" x:Class="P.E.Diary.Widgets.NewNormativeDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:P.E.Diary.Widgets"
+        xmlns:local="clr-namespace:P.E.Diary.Widgets" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         mc:Ignorable="d"
-        Title="Новый норматив" Height="459" Width="600" ResizeMode="CanMinimize">
+        Title="Новый норматив" Height="416" Width="600" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,4">
         <Label Content="Новый норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
-        <StackPanel HorizontalAlignment="Center" Height="368" Margin="0,33,0,0" VerticalAlignment="Top" Width="580" Background="#FFE5E4E4">
+        <StackPanel HorizontalAlignment="Center" Height="323" Margin="0,33,0,0" VerticalAlignment="Top" Width="580" Background="#FFE5E4E4">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
@@ -24,8 +24,8 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="Название" Width="60" HorizontalAlignment="Left" 
                        Margin="10,12,0,20" IsEnabled="False" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
-                <TextBox x:Name="NameBox" TextWrapping="Wrap" 
-                         FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,2,10,13" TabIndex="0">
+                <wpfui:TextBox x:Name="NameBox" TextWrapping="Wrap" 
+                         FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,6,10,10" TabIndex="0">
                     <TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -34,14 +34,18 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </TextBox.RenderTransform>
-                </TextBox>
+                </wpfui:TextBox>
                 <Label Content="Категория" HorizontalAlignment="Left" IsEnabled="False" Margin="10,7,0,3"
                        Grid.Column="0" Grid.Row="1"/>
                 <ComboBox x:Name="TypeSelection" Width="120" FontSize="10" Grid.Column="1" Margin="14,0,36,0" Grid.Row="1" TabIndex="1"/>
-                <Button x:Name="AddType" Content="Новая категория"  Grid.Column="1" Grid.Row="1"  Margin="146,1,46,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" VerticalAlignment="Top" TabIndex="2" />
-                <Label Content="Формула" HorizontalAlignment="Center" Margin="0,28,0,-28" IsEnabled="False" Grid.Row="3"/>
-                <TextBox x:Name="Formula" TextWrapping="Wrap" 
-                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,18,10,-38" TabIndex="4">
+                <wpfui:Button Appearance="Secondary" Icon="Add20" x:Name="AddType" 
+                              Content="Новая категория"  Grid.Column="1" Grid.Row="1"  
+                              Margin="146,1,21,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" 
+                              FontSize="10" VerticalAlignment="Top" TabIndex="2" 
+                              Click="NewType_Click"/>
+                <Label Content="Формула" HorizontalAlignment="Left" Margin="13,16,0,16" IsEnabled="False" Grid.Row="3"/>
+                <wpfui:TextBox x:Name="Formula" TextWrapping="Wrap" 
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,10,10,10" TabIndex="4" TextChanged="Formula_TextChanged">
                     <TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -50,15 +54,19 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </TextBox.RenderTransform>
-                </TextBox>
-                <Button x:Name="DeleteType" Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="129,1,59,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" VerticalAlignment="Top" TabIndex="3" />
+                </wpfui:TextBox>
+                <wpfui:Button Appearance="Secondary" Icon="Delete20" x:Name="DeleteType" 
+                              Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="154,1,10,0" 
+                              Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" 
+                              VerticalAlignment="Top" TabIndex="3" 
+                              Click="DeleteType_Click"/>
             </Grid>
-            <Label Content="Условные обозначения" Margin="0,60,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"/>
+            <Label Content="Условные обозначения" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"/>
 
 
         </StackPanel>
         <Button x:Name="CreateNormative" Content="Создать норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Background="#FFF6F6F6" FontSize="14" TabIndex="5"/>
-        <Grid Height="187" Margin="40,237,40,0" VerticalAlignment="Top">
+        <Grid Height="176" Margin="40,209,40,0" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
