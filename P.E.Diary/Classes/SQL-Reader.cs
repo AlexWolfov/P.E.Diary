@@ -443,9 +443,9 @@ public class SqlReader
         }
     }
 
-    public static int GetTestResult(int normativeId, int pupilId, string testDate)
+    public static double GetTestResult(int normativeId, int pupilId, string testDate)
     {
-        int result = 0;
+        double result = 0;
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
@@ -457,7 +457,7 @@ public class SqlReader
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     reader.Read();
-                    if (reader.HasRows) result = reader.GetInt32(0);
+                    if (reader.HasRows) result = reader.GetDouble(0);
                 }
             }
             return result;
@@ -507,7 +507,7 @@ public class SqlReader
             if (rowsCount > 0) //если есть зачет, то редактируем
             {
                 commandText = string.Format(
-                    "UPDATE Tests SET Result = {0} WHERE (NormativeId = {1}) and (PupilId = {2}) and (Date = '{3}')",
+                    "UPDATE Tests SET Result = '{0}' WHERE (NormativeId = {1}) and (PupilId = {2}) and (Date = '{3}')",
                     newResult, normativeId, pupilId, testDate);
                 using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {
@@ -517,7 +517,7 @@ public class SqlReader
             else //если зачет не проведен. то проводим
             {
                 commandText = string.Format(
-                    "INSERT INTO main.Tests (PupilId, Result, NormativeId, Date) VALUES ({0}, {1}, {2}, '{3}')",
+                    "INSERT INTO main.Tests (PupilId, Result, NormativeId, Date) VALUES ({0}, '{1}', {2}, '{3}')",
                     pupilId, newResult, normativeId, testDate);
                 using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {
