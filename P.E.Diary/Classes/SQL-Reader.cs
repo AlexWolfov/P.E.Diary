@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 
-namespace P.E._Helper;
+namespace P.E.Diary;
 
 public class SqlReader
 {
@@ -49,7 +49,7 @@ public class SqlReader
                             primary key autoincrement,
                         PupilId     int
                             references Pupils,
-                        Result      int,
+                        Result      real,
                         NormativeId int
                             references Normatives,
                         Date        varchar(10)
@@ -428,13 +428,13 @@ public class SqlReader
         }
     }
 
-    public static void ApplyNormative(int normativeId, int pupilId, int testResult)
+    public static void ApplyNormative(int normativeId, int pupilId, double testResult)
     {
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
             string commandText = string.Format(
-                "INSERT INTO main.Tests (PupilId, Result, NormativeId, Date) VALUES ({0}, {1}, {2}, '{3}')",
+                "INSERT INTO main.Tests (PupilId, Result, NormativeId, Date) VALUES ({0}, '{1}', {2}, '{3}')",
                 pupilId, testResult, normativeId, DateTime.Now.Date.ToString().Substring(0, 10));
             using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
             {
@@ -488,7 +488,7 @@ public class SqlReader
         return result;
     }
 
-    public static void EditTest(int normativeId, int pupilId, string testDate, int newResult)
+    public static void EditTest(int normativeId, int pupilId, string testDate, double newResult)
     {
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
@@ -542,7 +542,7 @@ public class SqlReader
                 {
                     while (reader.Read())
                     {
-                        result.Add(new Test(reader.GetInt32(0), reader.GetString(1)));
+                        result.Add(new Test(reader.GetDouble(0), reader.GetString(1)));
                     }
                 }
             }
@@ -565,7 +565,7 @@ public class SqlReader
                 {
                     while (reader.Read())
                     {
-                        result.Add(new Test(reader.GetInt32(0), reader.GetString(1), ReturnNormative(reader.GetInt32(2))));
+                        result.Add(new Test(reader.GetDouble(0), reader.GetString(1), ReturnNormative(reader.GetInt32(2))));
                     }
                 }
             }

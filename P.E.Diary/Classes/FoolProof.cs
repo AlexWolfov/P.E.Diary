@@ -17,7 +17,20 @@ public class FoolProof
         }
         return true;
     }
-    
+
+    public static bool SetDouble(ref double target, string value)
+    {
+        double oldValue = target;
+        if (!double.TryParse(value, System.Globalization.NumberStyles.Any, new System.Globalization.CultureInfo("en-US"), out target))
+        {
+            MessageBox.Show("Неверный формат ввода", "Ошибка",
+                MessageBoxButton.OK, MessageBoxImage.Stop);
+            target = oldValue;
+            return false;
+        }
+        return true;
+    }
+
     public static string ReturnDate(string target, string value)
     {
         if (!DateTime.TryParse(value, out DateTime result))
@@ -47,7 +60,13 @@ public class FoolProof
         return (MessageBox.Show(messageText, "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No)
             == MessageBoxResult.Yes);
     }
-    
-    
+
+    public static bool MessageBoxProtection(string messageText, string header)
+    {
+        return (MessageBox.Show(messageText, header, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No)
+            == MessageBoxResult.Yes);
+    }
+
+
 
 }

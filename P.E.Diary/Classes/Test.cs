@@ -4,7 +4,7 @@ public class Test
 {
     public readonly Normative Normative;
     public readonly string Date;
-    public readonly int Result; // необязательный параметр, необходимый для отрисовки статистики
+    public readonly double Result; // необязательный параметр, необходимый для отрисовки статистики
 
     public Test(Normative normative, string date)
     {
@@ -12,13 +12,13 @@ public class Test
         Date = date;
     }
     
-    public Test(int result, string date)
+    public Test(double result, string date)
     {
         Date = date;
         Result = result;
     }
     
-    public Test(int result, string date, Normative normative)
+    public Test(double result, string date, Normative normative)
     {
         Date = date;
         Result = result;

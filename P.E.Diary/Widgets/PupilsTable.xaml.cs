@@ -19,12 +19,7 @@ namespace P.E.Diary.Widgets
             InitializeComponent();
         }
 
-        public void ClearTable()
-        {
-            List<PupilRow> pupilRows = new List<PupilRow>();
-            Table.ItemsSource = pupilRows;
-        }
-
+        #region Back
 
         public void LoadTable(SchoolClass newClass)
         {
@@ -38,6 +33,7 @@ namespace P.E.Diary.Widgets
                     pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, (pupil.Birthday).Substring(0,10), pupil.Height.ToString(), pupil.Weight.ToString()));
                 }
             }
+            Table.Items.Refresh();
         }
 
         private string GetCurrentCellValue()
@@ -191,24 +187,23 @@ namespace P.E.Diary.Widgets
             LoadTable(CurrentClass);
         }
 
-        
+
         private Pupil RowToPupil(int rowX)
         {
             return CurrentClass.Pupils[rowX];
-        }
 
+        }
 
         public List<Pupil> ReturnSelectedPupils()
         {
-            List<Pupil> result = new List<Pupil>();
-            var rows = Table.SelectedItems;
-            foreach (DataGridRow row in rows)
+            if (Table.SelectedItems.Count != 0)
             {
-                result.Add(RowToPupil(row.GetIndex()));
+                return CurrentClass.Pupils.GetRange(GetCurrentCellAdressAxesY(), Table.SelectedItems.Count);
             }
-            return result;
+            return new List<Pupil>();
         }
 
+        #endregion
 
         #region Events
 

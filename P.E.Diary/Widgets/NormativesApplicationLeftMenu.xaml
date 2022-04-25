@@ -16,14 +16,14 @@
                             Width="90"
                             Content="Провести зачет"
                             Icon="Sport20"
-                            Tag="add" 
-                            Click="AddButton_Click"/>
+                            Tag="apply" 
+                            Click="ApplyButton_Click"/>
                 <wpfui:NavigationItem
                             Width="90"
                             Content="Убрать ученика"
                             Icon="PresenceDnd20"
                             Tag="cancel" 
-                            Click="AddButton_Click" VerticalAlignment="Top"/>
+                            Click="DeleteButton_Click" VerticalAlignment="Top"/>
             </wpfui:NavigationStore.Items>
         </wpfui:NavigationStore>
     </Grid>

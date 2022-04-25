@@ -20,14 +20,24 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class NormativesApplicationLeftMenu : UserControl
     {
+        public TestParticipatorsTable TestParticipatorsTable;
+        public NormativesList NormativesList;
+        public ApplyNormativeWindow Window;
+
         public NormativesApplicationLeftMenu()
         {
             InitializeComponent();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            TestParticipatorsTable.ApplyNormative(NormativesList.GetActiveNormative());
+            Window.Close();
+        }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            TestParticipatorsTable.DeleteSelectedRow();
         }
     }
 }

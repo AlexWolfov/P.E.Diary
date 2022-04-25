@@ -30,6 +30,8 @@ namespace P.E.Diary.Widgets
             LoadClasses();
         }
 
+        #region Back
+
         public void LoadClasses()
         {
             _classes = SqlReader.LoadClasses();
@@ -53,10 +55,13 @@ namespace P.E.Diary.Widgets
                 SqlReader.DeleteClass(Convert.ToInt32(classInfo[0]), classInfo[1]);
                 _classes.Remove(classInfo[0] + ' ' + classInfo[1]); //Удаляем из словаря класс с текущим ключем
                 ClassesList.Items.Remove(ClassesList.SelectedItem);
-                PupilsTable.ClearTable();
+                ClassesList.Items.Refresh();
             }
         }
 
+        #endregion
+
+        #region Events
 
         private void ClassesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { 
@@ -83,7 +88,18 @@ namespace P.E.Diary.Widgets
 
         private void ApplyNormative_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Pupil> selectedPupils = PupilsTable.ReturnSelectedPupils();
+            if (selectedPupils.Count > 0)
+            {
+                ApplyNormativeWindow applyNormativeWindow = new ApplyNormativeWindow(selectedPupils);
+            }
+            else
+            {
+                FoolProof.UniversalProtection("Выберите учеников");
+            }
         }
+            
+
+        #endregion
     }
 }

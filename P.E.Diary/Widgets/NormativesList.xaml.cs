@@ -49,6 +49,7 @@ namespace P.E.Diary.Widgets
             LoadNormatives();
         }
 
+
         public string GetSelectedNodeText()
         {
             return ((TreeViewItem)MainList.SelectedItem).Header.ToString();
@@ -56,7 +57,14 @@ namespace P.E.Diary.Widgets
 
         public Normative GetActiveNormative()
         {
-            return Normatives[GetSelectedNodeText()];
+            try
+            {
+                return Normatives[GetSelectedNodeText()];
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public void CreateNormative()
@@ -65,7 +73,7 @@ namespace P.E.Diary.Widgets
             createNormativeForm.Show();
         }
 
-        public void DeleteNode()
+        public void DeleteSelectedNode()
         {
             if (MainList.SelectedItem != null)
             {
@@ -114,15 +122,13 @@ namespace P.E.Diary.Widgets
                 {
                     try
                     {
-                        item.MouseDoubleClick += TypeItem_Edit;
                         item.ItemsSource = normativesNamesByTypes[item.Header.ToString()];
-                        foreach (TreeViewItem normativeItem in item.Items)
-                        {
-                            normativeItem.MouseDoubleClick += NormativeItem_Edit;
-                        }
+                        item.MouseDoubleClick += ItemMouse_DoubleClick;
                     }
                     catch (KeyNotFoundException ex)
-                    { }
+                    {
+                        item.MouseDoubleClick += ItemMouse_DoubleClick;
+                    }
                 }
             }
         }
@@ -136,13 +142,25 @@ namespace P.E.Diary.Widgets
         #endregion
 
         #region Events
+
+        private void ItemMouse_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+            {
+                TypeItem_Edit();
+            }
+            else //если родителя нет, то это норматив
+            {
+                NormativeItem_Edit();
+            }
+        }
         
-        private void TypeItem_Edit(object sender, MouseButtonEventArgs e)
+        private void TypeItem_Edit()
         {
             EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
         }
 
-        private void NormativeItem_Edit(object sender, MouseButtonEventArgs e)
+        private void NormativeItem_Edit()
         {
             EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
         }
@@ -169,7 +187,7 @@ namespace P.E.Diary.Widgets
         
         private void ContextMenuDeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            DeleteNode();
+            DeleteSelectedNode();
         }
 
         private void ContextMenuReloadButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -209,7 +227,23 @@ namespace P.E.Diary.Widgets
             }
         }
 
+        private void MainList_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Delete:
+                    DeleteSelectedNode();
+                    break;
+                case Key.Escape:
+                    ((TreeViewItem)MainList.SelectedItem).IsSelected = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
         #endregion
+
     }
 }

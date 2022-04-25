@@ -19,9 +19,15 @@ namespace P.E.Diary
     /// </summary>
     public partial class ApplyNormativeWindow : Window
     {
-        public ApplyNormativeWindow()
+
+        public ApplyNormativeWindow(List<Pupil> pupils)
         {
             InitializeComponent();
+            Table.LoadData(pupils);
+            LeftMenu.TestParticipatorsTable = Table;
+            LeftMenu.NormativesList = NormativesList;
+            LeftMenu.Window = this;
+            Show();
         }
     }
 }

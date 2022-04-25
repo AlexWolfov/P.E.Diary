@@ -33,7 +33,7 @@ namespace P.E.Diary.Widgets
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            NormativesList.DeleteNode();
+            NormativesList.DeleteSelectedNode();
         }
          
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +48,10 @@ namespace P.E.Diary.Widgets
                 {
                     EditNormativeDialog editNormativeDialog = new EditNormativeDialog(NormativesList, NormativesList.GetActiveNormative());
                 }
+            }
+            else
+            {
+                FoolProof.UniversalProtection("Выберите норматив или категорию");
             }
         }
     }

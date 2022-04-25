@@ -7,7 +7,7 @@
              xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
              mc:Ignorable="d" Width="Auto" Height="Auto">
     <Grid>
-        <TreeView x:Name="MainList" Background="{x:Null}" BorderBrush="Black" Height="Auto" Width="Auto">
+        <TreeView x:Name="MainList" BorderBrush="#FFD2D2D2" Height="Auto" Width="Auto" PreviewKeyDown="MainList_PreviewKeyDown">
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem">
                     <Style.Triggers>

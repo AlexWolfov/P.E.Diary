@@ -42,7 +42,7 @@ namespace P.E.Diary
             Surname = "Empty";
         }
 
-        public int GetMark(Normative normative, int testResult) //возвращает результат норматива для текущего норматива
+        public int GetMark(Normative normative, double testResult) //возвращает результат норматива для текущего норматива
         {
             if (testResult == 0)
             {

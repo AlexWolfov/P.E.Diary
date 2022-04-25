@@ -9,12 +9,13 @@
         Title="Повести зачет" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="206*"/>
+            <ColumnDefinition Width="149*"/>
         </Grid.ColumnDefinitions>
-        <Widgets:NormativesApplicationLeftMenu Grid.Column="1" HorizontalAlignment="Left"/>
-        <Widgets:NormativesList Margin="0,0,0,0" Grid.Column="3"/>
+        <Widgets:NormativesApplicationLeftMenu x:Name="LeftMenu" HorizontalAlignment="Center" Width="90"/>
+        <Widgets:NormativesList x:Name="NormativesList" Margin="0,0,5,0" Grid.Column="2"/>
+        <Widgets:TestParticipatorsTable x:Name="Table" Grid.Column="1" Margin="0,0,1,0"/>
 
     </Grid>
 </Window>
