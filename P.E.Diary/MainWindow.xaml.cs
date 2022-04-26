@@ -31,7 +31,6 @@ namespace P.E.Diary
             {
                 File.Copy(".\\Database", ".\\Database save", true);
             }
-            Corruptor.LoadNames();
             InitializeComponent();
             LeftMenu.PupilsTable = PupilsTable;
             LeftMenu.MainWindow = this;
