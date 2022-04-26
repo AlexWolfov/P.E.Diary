@@ -4,16 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P.E.Diary"
-        xmlns:Widgets="clr-namespace:P.E.Diary.Widgets" x:Name="Window" x:Class="P.E.Diary.MainWindow"
+        xmlns:Widgets="clr-namespace:P.E.Diary.Widgets" x:Class="P.E.Diary.MarksStatisticWindow"
         mc:Ignorable="d"
-        Title="Дневник учителя" Height="620" Width="800">
-    <Grid x:Name="MainGrid">
+        Title="Оценки" Height="450" Width="800">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Widgets:LeftMenu x:Name="LeftMenu" HorizontalAlignment="Center"/>
-        <Widgets:PupilsTable x:Name="PupilsTable" Margin="0,0,5,0" Grid.Column="1"/>
+        <Widgets:PupilsMarksTable x:Name="MarksTable" Grid.Column="1"/>
+        <Widgets:MarksLeftMenu x:Name="LeftMenu" HorizontalAlignment="Center" Width="90"/>
+
     </Grid>
 </Window>
-

@@ -15,20 +15,14 @@ using System.Windows.Shapes;
 namespace P.E.Diary
 {
     /// <summary>
-    /// Interaction logic for ApplyNormativeWindow.xaml
+    /// Interaction logic for MarksStatisticWindow.xaml
     /// </summary>
-    public partial class ApplyNormativeWindow : Window
+    public partial class MarksStatisticWindow : Window
     {
-
-        public ApplyNormativeWindow(List<Pupil> pupils)
+        public MarksStatisticWindow()
         {
             InitializeComponent();
-            Table.LoadData(pupils);
-            LeftMenu.TestParticipatorsTable = Table;
-            LeftMenu.NormativesList = NormativesList;
-            LeftMenu.Window = this;
-            NormativesList.TestParticipatorsTable = Table;
-            NormativesList.ParentWindow = this;
+            LeftMenu.PupilsTable = MarksTable;
             Show();
         }
     }

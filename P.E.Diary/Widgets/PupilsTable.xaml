@@ -6,22 +6,34 @@
              xmlns:local="clr-namespace:P.E.Diary.Widgets"
              mc:Ignorable="d" 
              Height="Auto" Width="Auto">
-    <DataGrid x:Name="Table" Background="#FFFFFF" Height="Auto" Width="Auto" 
-              ItemsSource="{Binding}" ColumnWidth="*" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <Button Name="AddPupilButton"  Content="Новый ученик" Click="AddButton_Click"/>
+                <Button Name="DeletePupil" Content="Удалить ученика" Click="DeleteButton_Click"/>
+            </ToolBar>
+        </ToolBarTray>
+        <DataGrid x:Name="Table" Background="#FFFFFF"
+              ItemsSource="{Binding}" ColumnWidth="*" Grid.Row="1"
               CellEditEnding="Table_CellEditEnding"
               PreviewKeyDown="Table_PreviewKeyDown" AddingNewItem="Table_AddingNewItem">
         <DataGrid.ContextMenu>
-            <ContextMenu Name="ContextMenuDeleteAddButtons" Opened="ContextMenuDeleteAddButtons_Opened">
-                <MenuItem Name="AddButton" Click="AddButton_Click" Header="Добавить ученика Ctrl +"/>
-                <MenuItem Name="DeleteButton" Click="DeleteButton_Click" Header="Удалить ученика Delete"/>
-                <MenuItem Name="ReloadButton" Click="ReloadButton_Click" Header="Перезагрузить таблицу Ctrl R"/>
-            </ContextMenu>
-        </DataGrid.ContextMenu>
-        <DataGrid.Columns/>
-        <DataGrid.CellStyle>
-            <Style TargetType="{x:Type DataGridCell}">
+                <ContextMenu Name="ContextMenuDeleteAddButtons" Opened="ContextMenuDeleteAddButtons_Opened">
+                    <MenuItem Name="AddButton" Click="AddButton_Click" Header="Добавить ученика"/>
+                    <MenuItem Name="DeleteButton" Click="DeleteButton_Click" Header="Удалить ученика"/>
+                    <MenuItem Name="ReloadButton" Click="ReloadButton_Click" Header="Перезагрузить таблицу"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns/>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
 
-            </Style>
-        </DataGrid.CellStyle>
-    </DataGrid>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
 </UserControl>

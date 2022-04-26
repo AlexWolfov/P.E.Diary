@@ -22,6 +22,9 @@ namespace P.E.Diary.Widgets
     {
         private static List<String> Types;
         private static Dictionary<string, Normative> Normatives;
+        public TestParticipatorsTable TestParticipatorsTable;
+        public Window ParentWindow;
+
         private static List<NormativesList> _normativesLists; //список со весми списками нормативов. Нужен для параллельного их редактирования
 
         public NormativesList()
@@ -145,13 +148,21 @@ namespace P.E.Diary.Widgets
 
         private void ItemMouse_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+            if (TestParticipatorsTable == null)
             {
-                TypeItem_Edit();
+                if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+                {
+                    TypeItem_Edit();
+                }
+                else //если родителя нет, то это норматив
+                {
+                    NormativeItem_Edit();
+                }
             }
-            else //если родителя нет, то это норматив
+            else
             {
-                NormativeItem_Edit();
+                TestParticipatorsTable.ApplyNormative(Normatives[GetSelectedNodeText()]);
+                ParentWindow.Close();
             }
         }
         
@@ -174,14 +185,14 @@ namespace P.E.Diary.Widgets
         {
             if (MainList.SelectedItem != null)
             {
-                if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
-                {
-                    EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
-                }
-                else //если родителя нет, то это норматив
-                {
-                    EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
-                }
+                    if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+                    {
+                        EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
+                    }
+                    else //если родителя нет, то это норматив
+                    {
+                        EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
+                    }
             }
         } 
         

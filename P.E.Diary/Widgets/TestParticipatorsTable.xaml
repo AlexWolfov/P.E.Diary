@@ -10,7 +10,7 @@
               PreviewKeyDown="Table_PreviewKeyDown">
         <DataGrid.ContextMenu>
             <ContextMenu Name="ContextMenu" Opened="ContextMenu_Opened">
-                <MenuItem Name="DeleteButton" Click="DeleteButton_Click" Header="Убрать из списка Delete"/>
+                <MenuItem Name="DeleteButton" Click="DeleteButton_Click" Header="Убрать из списка"/>
             </ContextMenu>
         </DataGrid.ContextMenu>
         <DataGrid.Columns/>

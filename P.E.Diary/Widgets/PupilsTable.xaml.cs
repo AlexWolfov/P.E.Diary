@@ -13,7 +13,7 @@ namespace P.E.Diary.Widgets
     public partial class PupilsTable : UserControl
     {
         public SchoolClass CurrentClass;
-
+            
         public PupilsTable()
         {
             InitializeComponent();
@@ -116,7 +116,7 @@ namespace P.E.Diary.Widgets
             if (CurrentClass != null && GetCurrentCellAdressAxesY() != -1)
             {
                 Pupil pupil = CurrentClass.Pupils[GetCurrentCellAdressAxesY()]; //считывем изменяемого ученика
-                switch (Table.CurrentColumn.Header)
+                switch (e.Column.Header)
                 {
                     case "Фамилия":
                         pupil.Surname = value;
@@ -317,11 +317,22 @@ namespace P.E.Diary.Widgets
                     DeleteRow();
                 }
             }
+            else
+            {
+                FoolProof.UniversalProtection("Выберите ученика");
+            }
         }
 
         private void AddButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            AddRow();
+            if (CurrentClass != null)
+            {
+                AddRow();
+            }
+            else
+            {
+                FoolProof.UniversalProtection("Выберите класс");
+            }
         }
 
         private void ReloadButton_Click(object sender, System.Windows.RoutedEventArgs e)

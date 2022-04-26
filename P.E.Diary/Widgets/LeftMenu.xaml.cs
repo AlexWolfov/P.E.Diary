@@ -86,6 +86,11 @@ namespace P.E.Diary.Widgets
             NormativesForm normativesForm = new NormativesForm();
         }
 
+        private void MarksStatisticButton_Click(object sender, RoutedEventArgs e)
+        {
+            MarksStatisticWindow marksStatisticWindow = new MarksStatisticWindow();
+        }
+
         private void ApplyNormative_Click(object sender, RoutedEventArgs e)
         {
             List<Pupil> selectedPupils = PupilsTable.ReturnSelectedPupils();
@@ -98,7 +103,7 @@ namespace P.E.Diary.Widgets
                 FoolProof.UniversalProtection("Выберите учеников");
             }
         }
-            
+
 
         #endregion
     }

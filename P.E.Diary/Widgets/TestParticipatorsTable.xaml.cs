@@ -53,7 +53,7 @@ namespace P.E.Diary.Widgets
             Table.ItemsSource = participators;
         }
 
-        public void ApplyNormative(Normative normative)
+        public bool ApplyNormative(Normative normative) //true если удалось провести зачет
         {
             if (normative != null)
             {
@@ -62,12 +62,14 @@ namespace P.E.Diary.Widgets
                     SqlReader.ApplyNormative(normative.Id,
                         _pupils[i].Id, //применяем норматив для данного ученика
                         ReturnResultByIndex(i));
+                    return true;
                 }
             }
             else
             {
                 FoolProof.UniversalProtection("Выберите норматив");
             }
+            return false;
         }
 
         public void DeleteSelectedRow()

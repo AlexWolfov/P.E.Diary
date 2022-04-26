@@ -31,8 +31,10 @@ namespace P.E.Diary.Widgets
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            TestParticipatorsTable.ApplyNormative(NormativesList.GetActiveNormative());
-            Window.Close();
+            if (TestParticipatorsTable.ApplyNormative(NormativesList.GetActiveNormative()))
+            {
+                Window.Close();
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

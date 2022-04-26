@@ -49,7 +49,7 @@ public class SqlReader
                             primary key autoincrement,
                         PupilId     int
                             references Pupils,
-                        Result      real,
+                        Result      varchar(10),
                         NormativeId int
                             references Normatives,
                         Date        varchar(10)
@@ -457,7 +457,11 @@ public class SqlReader
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     reader.Read();
-                    if (reader.HasRows) result = reader.GetDouble(0);
+                    if (reader.HasRows)
+                    {
+                        string Test = reader.GetDataTypeName(0);
+                        result = Convert.ToDouble(reader.GetString(0)); //костыль, т.к. в SQLite нет double
+                    }
                 }
             }
             return result;
@@ -542,7 +546,7 @@ public class SqlReader
                 {
                     while (reader.Read())
                     {
-                        result.Add(new Test(reader.GetDouble(0), reader.GetString(1)));
+                        result.Add(new Test(Convert.ToDouble(reader.GetString(0)), reader.GetString(1)));
                     }
                 }
             }
@@ -565,7 +569,7 @@ public class SqlReader
                 {
                     while (reader.Read())
                     {
-                        result.Add(new Test(reader.GetDouble(0), reader.GetString(1), ReturnNormative(reader.GetInt32(2))));
+                        result.Add(new Test(Convert.ToDouble(reader.GetString(0)), reader.GetString(1), ReturnNormative(reader.GetInt32(2))));
                     }
                 }
             }

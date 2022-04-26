@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="P.E.Diary.Widgets.LeftMenu"
+﻿<UserControl x:Class="P.E.Diary.Widgets.MarksLeftMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,43 +22,17 @@
             <wpfui:NavigationStore.Items>
                 <wpfui:NavigationItem
                         Width="78"
-                        Content="Добавить"
-                        Icon="AddCircle20"
+                        Content="Изменить"
+                        Icon="Pen20"
                         Tag="add" 
-                        Click="AddButton_Click"/>
+                        Click="EditButton_Click"/>
                 <wpfui:NavigationItem
                         Width="78"
                         Content="Удалить"
                         Icon="Delete20"
                         Tag="delete"
                         Click="DeleteButton_Click"/>
-                <wpfui:NavigationItem
-                        Width="78"
-                        Content="Нормативы"
-                        Icon="SportSoccer20"
-                        Tag="normatives" 
-                        Click="Normatives_Click"/>
-                <wpfui:NavigationItem
-                        Width="78"
-                        Content="Зачет"
-                        Icon="Sport20"
-                        Tag="apply"
-                        Click="ApplyNormative_Click"/>
-                <wpfui:NavigationItem
-                        Width="78"
-                        Content="Статистика"
-                        Icon="DataArea20"
-                        Tag="stats" 
-                        Click="MarksStatisticButton_Click"/>
             </wpfui:NavigationStore.Items>
-            <wpfui:NavigationStore.Footer>
-                <wpfui:NavigationItem
-                        Width="78"
-                        Content="Загрузка"
-                        Icon="DatabaseArrowUp20"
-                        Tag="load" />
-            </wpfui:NavigationStore.Footer>
         </wpfui:NavigationStore>
     </Grid>
-   
 </UserControl>
