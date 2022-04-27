@@ -7,8 +7,9 @@
              mc:Ignorable="d" 
              Height="Auto" Width="Auto">
     <DataGrid x:Name="Table" Background="#FFFFFF" Height="Auto" Width="Auto" 
-              ItemsSource="{Binding}" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
-        <!--CellEditEnding="Table_CellEditEnding"
+              ItemsSource="{Binding}" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False" 
+              IsReadOnly="True" CanUserReorderColumns="False" SelectionUnit="Cell">
+        <!--CellEditEnding="Table_CellEditEnding" 
               PreviewKeyDown="Table_PreviewKeyDown" AddingNewItem="Table_AddingNewItem"!-->
         <!--DataGrid.ContextMenu>
             <ContextMenu Name="ContextMenuDeleteAddButtons" Opened="ContextMenuDeleteAddButtons_Opened">

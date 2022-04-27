@@ -41,6 +41,15 @@ namespace P.E.Diary.Widgets
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            if (PupilsTable.Table.SelectedItem != null)
+            {
+                TestEditDialog testEditDialog = new TestEditDialog(_classes[ClassesList.SelectedItem.ToString()].Pupils,
+                    PupilsTable.GetSelectedTest());
+            }
+            else
+            {
+                FoolProof.UniversalProtection("Вы не выбрали зачет");
+            }
 
         }
 

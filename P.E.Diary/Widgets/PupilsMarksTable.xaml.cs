@@ -28,6 +28,15 @@ namespace P.E.Diary.Widgets
             InitializeComponent();
         }
 
+        public Test GetSelectedTest()
+        {
+            if (Table.SelectedCells[0].Column != null)
+            {
+                return _tests[Table.SelectedCells[0].Column.DisplayIndex - 2];
+            }
+            return null;
+        }
+
         public void LoadTable(SchoolClass schoolClass)
         {
             _currentSchoolClass = schoolClass;
@@ -56,9 +65,17 @@ namespace P.E.Diary.Widgets
                 for (int j = 0; j < _tests.Count; j++)
                 {
                     string header = _tests[j].Normative.Name + " " + _tests[j].Date.ToString();
-                    row.Data[j + 2] = _currentSchoolClass.Pupils[i].GetMark(_tests[j].Normative, 
+                    int mark = _currentSchoolClass.Pupils[i].GetMark(_tests[j].Normative,
                         SqlReader.GetTestResult(_tests[j].Normative.Id, _currentSchoolClass.Pupils[i].Id,
-                        _tests[j].Date)).ToString();
+                        _tests[j].Date));
+                    if (mark > 5)
+                    {
+                        row.Data[j + 2] = "5+1";
+                    }
+                    else
+                    {
+                        row.Data[j + 2] = mark.ToString();
+                    }
                 }
                 data[i] = row;
             }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using P.E.Diary.Classes;
 
 namespace P.E.Diary.Widgets
 {
@@ -39,7 +40,7 @@ namespace P.E.Diary.Widgets
         
         private double ReturnResultByIndex(int index)
         {
-            return ((TestParticipator) Table.Items[index]).Результат;
+            return Convert.ToDouble(((TestParticipator) Table.Items[index]).Результат);
         }
 
         public void LoadData(List<Pupil> pupils)
@@ -151,19 +152,5 @@ namespace P.E.Diary.Widgets
 
         #endregion
 
-    }
-
-    public class TestParticipator
-    {
-        public TestParticipator(string surname, string name, double result)
-        {
-            Фамилия = surname;
-            Имя = name;
-            Результат = result;
-        }
-
-        public string Фамилия { get; set; }
-        public string Имя { get; set; }
-        public double Результат { get; set; }
     }
 }
