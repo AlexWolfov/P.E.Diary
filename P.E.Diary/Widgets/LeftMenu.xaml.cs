@@ -104,7 +104,11 @@ namespace P.E.Diary.Widgets
             }
         }
 
-
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataBaseWindow dataBaseWindow = new DataBaseWindow();
+        }
         #endregion
+
     }
 }

@@ -16,36 +16,36 @@
         <wpfui:NavigationStore
                 x:Name="RootNavigation"
                 Grid.Column="0"
-                Width="78"
-                Margin="6,0,6,0"
+                Width="90"
+                Margin="0,0,0,0"
                 Grid.Row="1">
             <wpfui:NavigationStore.Items>
                 <wpfui:NavigationItem
-                        Width="78"
+                        Width="90"
                         Content="Добавить"
                         Icon="AddCircle20"
                         Tag="add" 
                         Click="AddButton_Click"/>
                 <wpfui:NavigationItem
-                        Width="78"
+                        Width="90"
                         Content="Удалить"
                         Icon="Delete20"
                         Tag="delete"
                         Click="DeleteButton_Click"/>
                 <wpfui:NavigationItem
-                        Width="78"
+                        Width="90"
                         Content="Нормативы"
                         Icon="SportSoccer20"
                         Tag="normatives" 
                         Click="Normatives_Click"/>
                 <wpfui:NavigationItem
-                        Width="78"
+                        Width="90"
                         Content="Зачет"
                         Icon="Sport20"
                         Tag="apply"
                         Click="ApplyNormative_Click"/>
                 <wpfui:NavigationItem
-                        Width="78"
+                        Width="90"
                         Content="Статистика"
                         Icon="DataArea20"
                         Tag="stats" 
@@ -53,10 +53,11 @@
             </wpfui:NavigationStore.Items>
             <wpfui:NavigationStore.Footer>
                 <wpfui:NavigationItem
-                        Width="78"
-                        Content="Загрузка"
-                        Icon="DatabaseArrowUp20"
-                        Tag="load" />
+                        Width="90"
+                        Content="База данных"
+                        Icon="Database20"
+                        Tag="load" 
+                        Click="LoadButton_Click"/>
             </wpfui:NavigationStore.Footer>
         </wpfui:NavigationStore>
     </Grid>

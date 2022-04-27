@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="P.E.Diary.Widgets.EditTestParticipatorsTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:P.E.Diary.Widgets"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <DataGrid x:Name="Table" Background="#FFFFFF" Height="Auto" Width="Auto" 
+              ItemsSource="{Binding}" ColumnWidth="*">
+        <DataGrid.Columns/>
+        <DataGrid.CellStyle>
+            <Style TargetType="{x:Type DataGridCell}">
+
+            </Style>
+        </DataGrid.CellStyle>
+    </DataGrid>
+</UserControl>

@@ -41,7 +41,7 @@ namespace P.E.Diary.Widgets
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PupilsTable.Table.SelectedItem != null)
+            if (PupilsTable.Table.CurrentCell != null)
             {
                 TestEditDialog testEditDialog = new TestEditDialog(_classes[ClassesList.SelectedItem.ToString()].Pupils,
                     PupilsTable.GetSelectedTest());
