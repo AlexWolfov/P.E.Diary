@@ -179,11 +179,12 @@ namespace P.E.Diary.Widgets
 
         private void DeleteRow()
         {
-            Pupil pupil = CurrentClass
-                .Pupils[GetCurrentCellAdressAxesY()]; //считывем удалемого ученика
-            SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
-            CurrentClass.Pupils.Remove(
-                CurrentClass.Pupils[GetCurrentCellAdressAxesY()]); //удалием ученика из списка класса
+            for (int i = 0; i < Table.SelectedItems.Count; i++)
+            {
+                Pupil pupil = CurrentClass.Pupils[i + Table.SelectedIndex]; //считывем удалемого ученика
+                SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
+            }
+            CurrentClass.Pupils.RemoveRange(Table.SelectedIndex, Table.SelectedItems.Count);
             LoadTable(CurrentClass);
         }
 
