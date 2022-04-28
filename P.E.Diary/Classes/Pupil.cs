@@ -44,10 +44,6 @@ namespace P.E.Diary
 
         public int GetMark(Normative normative, double testResult) //возвращает результат норматива для текущего норматива
         {
-            if (testResult == 0)
-            {
-                return 0;
-            }
             string formula = normative.Formula;
             formula = formula.Replace("R", testResult.ToString());
             formula = formula.Replace("W", Weight.ToString());
