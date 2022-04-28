@@ -55,7 +55,7 @@ namespace P.E.Diary.Widgets
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            PupilsTable.DeleteSelected();
         }
 
         private void ClassesList_SelectionChanged(object sender, SelectionChangedEventArgs e)

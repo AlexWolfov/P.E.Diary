@@ -37,6 +37,16 @@ namespace P.E.Diary.Widgets
             return null;
         }
 
+        public void DeleteSelected()
+        {
+            if (FoolProof.DeletionProtection(Table.SelectedCells[0].Column.Header.ToString()))
+            {
+                Test test = GetSelectedTest();
+                SqlReader.DeleteTest(test.Normative.Id,test.Date);
+                LoadTable(_currentSchoolClass);
+            }
+        }
+
         public void LoadTable(SchoolClass schoolClass)
         {
             _currentSchoolClass = schoolClass;
