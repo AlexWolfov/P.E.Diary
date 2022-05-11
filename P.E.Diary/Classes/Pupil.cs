@@ -1,5 +1,4 @@
 ﻿using System;
-using NCalc;
 
 namespace P.E.Diary
 {
@@ -18,11 +17,11 @@ namespace P.E.Diary
             {
                 _birthday = value;
                 DateTime.TryParse(value, out DateTime date);
-                TimeSpan years =  DateTime.Now.Subtract(date);
+                TimeSpan years = DateTime.Now.Subtract(date);
                 Age = new DateTime(1, 1, 1).Add(years).Year - 1;
             }
         }
-        public int Height; 
+        public int Height;
         public int Weight;
         public string Gender;
         public string Name;

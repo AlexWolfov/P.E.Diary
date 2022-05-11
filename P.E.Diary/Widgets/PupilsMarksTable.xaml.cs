@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace P.E.Diary.Widgets
 {
@@ -42,7 +31,7 @@ namespace P.E.Diary.Widgets
             if (FoolProof.DeletionProtection(Table.SelectedCells[0].Column.Header.ToString()))
             {
                 Test test = GetSelectedTest();
-                SqlReader.DeleteTest(test.Normative.Id,test.Date);
+                SqlReader.DeleteTest(test.Normative.Id, test.Date);
                 LoadTable(_currentSchoolClass);
             }
         }
@@ -63,9 +52,9 @@ namespace P.E.Diary.Widgets
             Table.Columns.Add(nameColumn);
             for (int i = 0; i < _tests.Count; i++)
             {
-                binding = new Binding("Data[" + (i+2) + "]");
+                binding = new Binding("Data[" + (i + 2) + "]");
                 string newColumnHeader = _tests[i].Normative.Name + " " + _tests[i].Date.ToString();
-                Table.Columns.Add(new DataGridTextColumn {Header = newColumnHeader, Binding = binding});
+                Table.Columns.Add(new DataGridTextColumn { Header = newColumnHeader, Binding = binding });
             }
             for (int i = 0; i < _currentSchoolClass.Pupils.Count; i++)
             {

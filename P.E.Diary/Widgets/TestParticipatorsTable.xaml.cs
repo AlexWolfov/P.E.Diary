@@ -1,18 +1,9 @@
-﻿using System;
+﻿using P.E.Diary.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using P.E.Diary.Classes;
 
 namespace P.E.Diary.Widgets
 {
@@ -37,10 +28,10 @@ namespace P.E.Diary.Widgets
         {
             return Table.CurrentCell.Column.DisplayIndex;
         }
-        
+
         private double ReturnResultByIndex(int index)
         {
-            return Convert.ToDouble(((TestParticipator) Table.Items[index]).Результат);
+            return Convert.ToDouble(((TestParticipator)Table.Items[index]).Результат);
         }
 
         public void LoadData(List<Pupil> pupils)
@@ -146,7 +137,7 @@ namespace P.E.Diary.Widgets
                     Table.SelectedItem = null;
                     break;
                 default:
-                    break;            
+                    break;
             }
         }
 

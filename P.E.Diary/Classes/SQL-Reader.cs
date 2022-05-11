@@ -374,7 +374,7 @@ public class SqlReader
                 {
                     commandText += "'" + normative.Ranges[i][key] + "',";
                 }
-                commandText += "'" + normative.Ranges[normative.Ranges.Count-1][key] + "')";
+                commandText += "'" + normative.Ranges[normative.Ranges.Count - 1][key] + "')";
                 using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {
                     command.ExecuteScalar();
@@ -393,12 +393,11 @@ public class SqlReader
                 string commandText = string.Format(@"UPDATE main.MarksTable SET");
                 for (int i = 0; i < normative.Ranges.Count - 1; i++)
                 {
-                    commandText += string.Format("'{0}'='{1}',", 
-                        i+Normative.minAge, normative.Ranges[i][key]);
+                    commandText += string.Format("'{0}'='{1}',",
+                        i + Normative.minAge, normative.Ranges[i][key]);
                 }
                 commandText += string.Format("'20'='{0}' WHERE (Mark='{1}') and (NormativeId={2})",
-                    normative.Ranges[normative.Ranges.Count-1][key], key, normative.Id);
-                commandText += "'" + normative.Ranges[normative.Ranges.Count - 1][key] + "')";
+                    normative.Ranges[normative.Ranges.Count - 1][key], key, normative.Id);
                 using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {
                     command.ExecuteScalar();
@@ -418,11 +417,11 @@ public class SqlReader
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
-            for (int i = 1; i<=5; i++)
+            for (int i = 1; i <= 5; i++)
             {
                 //выбираем нижние границы диапозонов
                 string commandText = string.Format(
-                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}min')", 
+                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}min')",
                     normative.Id, i);
                 using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
                 {

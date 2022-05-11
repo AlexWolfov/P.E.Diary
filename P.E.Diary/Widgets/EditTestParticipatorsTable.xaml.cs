@@ -1,18 +1,7 @@
-﻿using System;
+﻿using P.E.Diary.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using P.E.Diary.Classes;
 
 namespace P.E.Diary.Widgets
 {
@@ -45,7 +34,7 @@ namespace P.E.Diary.Widgets
             List<TestParticipator> participators = new List<TestParticipator>();
             foreach (Pupil pupil in _pupils)
             {
-                participators.Add(new TestParticipator(pupil.Surname, pupil.Name, 
+                participators.Add(new TestParticipator(pupil.Surname, pupil.Name,
                     SqlReader.GetTestResult(_currentTest.Normative.Id, pupil.Id, _currentTest.Date)));
 
             }

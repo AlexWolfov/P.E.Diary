@@ -11,13 +11,13 @@ public class Test
         Normative = normative;
         Date = date;
     }
-    
+
     public Test(double result, string date)
     {
         Date = date;
         Result = result;
     }
-    
+
     public Test(double result, string date, Normative normative)
     {
         Date = date;

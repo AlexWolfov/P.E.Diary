@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace P.E.Diary.Widgets
 {
@@ -82,7 +73,7 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection(GetSelectedNodeText()))
                 {
-                    if (((TreeViewItem) MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+                    if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
                     {
                         DeleteSelectedType();
                     }
@@ -112,13 +103,13 @@ namespace P.E.Diary.Widgets
                 Dictionary<string, List<TreeViewItem>> normativesNamesByTypes = new Dictionary<string, List<TreeViewItem>>(); //словарь нодов с именами нормативов по катериям
                 foreach (Normative normative in Normatives.Values)
                 {
-                   try
+                    try
                     {
                         normativesNamesByTypes[normative.Type].Add(new TreeViewItem { Header = normative.Name });
                     }
-                    catch(KeyNotFoundException ex) //если еще нет ключа
+                    catch (KeyNotFoundException ex) //если еще нет ключа
                     {
-                        normativesNamesByTypes.Add(normative.Type, new List<TreeViewItem> { new TreeViewItem { Header = normative.Name} });
+                        normativesNamesByTypes.Add(normative.Type, new List<TreeViewItem> { new TreeViewItem { Header = normative.Name } });
                     }
                 }
                 foreach (TreeViewItem item in normativesList.MainList.Items)
@@ -165,7 +156,7 @@ namespace P.E.Diary.Widgets
                 ParentWindow.Close();
             }
         }
-        
+
         private void TypeItem_Edit()
         {
             EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
@@ -180,22 +171,22 @@ namespace P.E.Diary.Widgets
         {
             NewNormativeDialog newNormativeDialog = new NewNormativeDialog(this);
         }
-        
+
         private void ContextMenuEditButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (MainList.SelectedItem != null)
             {
-                    if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
-                    {
-                        EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
-                    }
-                    else //если родителя нет, то это норматив
-                    {
-                        EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
-                    }
+                if (((TreeViewItem)MainList.SelectedItem).Parent != null) //если родителю есть, то это категория
+                {
+                    EditTypeDialog editTypeDialog = new EditTypeDialog(this, GetSelectedNodeText());
+                }
+                else //если родителя нет, то это норматив
+                {
+                    EditNormativeDialog editNormativeDialog = new EditNormativeDialog(this, GetActiveNormative());
+                }
             }
-        } 
-        
+        }
+
         private void ContextMenuDeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             DeleteSelectedNode();

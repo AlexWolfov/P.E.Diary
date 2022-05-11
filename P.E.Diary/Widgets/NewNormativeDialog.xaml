@@ -8,13 +8,14 @@
         Title="Новый норматив" Height="473" Width="642" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,4">
         <Label Content="Новый норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
-        <StackPanel HorizontalAlignment="Center" Margin="0,33,0,51" Width="622" Background="#FFE5E4E4">
+        <StackPanel HorizontalAlignment="Center" Margin="0,33,0,51" Width="622" Background="White">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="83"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -37,14 +38,14 @@
                     </TextBox.RenderTransform>
                 </wpfui:TextBox>
                 <Label Content="Категория" HorizontalAlignment="Left" IsEnabled="False" Margin="10,7,0,3"
-                       Grid.Column="0" Grid.Row="1"/>
-                <ComboBox x:Name="TypeSelection" Width="120" FontSize="10" Grid.Column="1" Margin="20,0,36,0" Grid.Row="1" TabIndex="1" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                       Grid.Column="0" Grid.Row="1" Width="56"/>
+                <ComboBox x:Name="TypeSelection" Width="153" FontSize="10" Grid.Column="1" Margin="20,0,0,0" Grid.Row="1" TabIndex="1" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 <wpfui:Button Appearance="Secondary" Icon="Add20" x:Name="AddType" 
                               Content="Новая категория"  Grid.Column="1" Grid.Row="1"  
-                              Margin="146,5,21,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" 
+                              Margin="178,5,10,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" 
                               FontSize="10" VerticalAlignment="Top" TabIndex="2" 
-                              Click="NewType_Click"/>
-                <Label Content="Формула" HorizontalAlignment="Left" Margin="13,16,0,16" IsEnabled="False" Grid.Row="3"/>
+                              Click="NewType_Click" Height="27" Width="180"/>
+                <Label Content="Формула" HorizontalAlignment="Left" Margin="13,16,0,16" IsEnabled="False" Grid.Row="3" Width="49"/>
                 <wpfui:TextBox x:Name="Formula" TextWrapping="Wrap" 
                     FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,10,10,10" TabIndex="4">
                     <TextBox.RenderTransform>
@@ -57,23 +58,29 @@
                     </TextBox.RenderTransform>
                 </wpfui:TextBox>
                 <wpfui:Button Appearance="Secondary" Icon="Delete20" x:Name="DeleteType" 
-                              Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="164,5,9,0" 
+                              Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="179,5,9,0" 
                               Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" 
                               VerticalAlignment="Top" TabIndex="3" 
-                              Click="DeleteType_Click"/>
+                              Click="DeleteType_Click" Height="27"/>
 
-                <Label Content="Условные обозначения" Grid.Row="4" Margin="146,61,0,0" HorizontalAlignment="Left" IsEnabled="False" Height="22" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
-                <Label Content="Таблица&#10;оценивания" HorizontalAlignment="Left" Margin="13,5,0,41" IsEnabled="False" Grid.Row="4" Grid.ColumnSpan="2"/>
+                <Label Content="Условные обозначения" Grid.Row="4" Margin="146,61,0,0" HorizontalAlignment="Left" IsEnabled="False" Height="22" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1" Width="129"/>
+                <Label Content="Таблица&#10;оценивания" HorizontalAlignment="Left" Margin="13,5,0,41" IsEnabled="False" Grid.Row="4" Grid.ColumnSpan="2" Width="67"/>
                 <wpfui:Button Appearance="Secondary" Icon="ArrowCircleUp20" x:Name="LoadTable" 
-                    Content="Загрузить"  Grid.Column="1" Grid.Row="4"  
-                    Margin="159,5,0,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" 
+                    Content="Загрузить"  Grid.Column="2" Grid.Row="4"  
+                    Margin="179,8,0,0" Background="#FFF6F6F6" 
                     FontSize="10" VerticalAlignment="Top" TabIndex="2" 
-                    Click="LoadTable_Click" HorizontalAlignment="Left"/>
-                <wpfui:Button Appearance="Secondary" Icon="ArrowCircleDown20" x:Name="SaveTablr" 
-                    Content="Сохранить"  Grid.Column="1" Grid.Row="4"  
-                    Margin="20,5,0,0" Background="#FFF6F6F6" 
-                    FontSize="10" VerticalAlignment="Top" TabIndex="2" 
-                    HorizontalAlignment="Left"/>
+                    Click="LoadTable_Click" HorizontalAlignment="Left" Height="28" Width="179" Grid.ColumnSpan="2"/>
+                <wpfui:TextBox x:Name="TablePath" TextWrapping="Wrap" 
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="4" Grid.Column="1" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" Grid.ColumnSpan="2" Width="338" IsEnabled="False">
+                    <wpfui:TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </wpfui:TextBox.RenderTransform>
+                </wpfui:TextBox>
             </Grid>
 
 

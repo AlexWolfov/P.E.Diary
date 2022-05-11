@@ -36,7 +36,7 @@ public class FoolProof
         if (!DateTime.TryParse(value, out DateTime result))
         {
             MessageBox.Show("Неверный формат ввода", "Ошибка",
-                    MessageBoxButton.OK, MessageBoxImage.Stop); 
+                    MessageBoxButton.OK, MessageBoxImage.Stop);
             return "-1";
         }
         if (result > DateTime.Today)
@@ -47,7 +47,7 @@ public class FoolProof
         }
         return result.ToString();
     }
-    
+
     public static void UniversalProtection(string message)
     {
         MessageBox.Show(message, "Ошибка",
@@ -56,7 +56,7 @@ public class FoolProof
 
     public static bool DeletionProtection(string deletedObjectName)
     {
-        string messageText = string.Format("Вы уверены, что хотите удалить {0}?",deletedObjectName);
+        string messageText = string.Format("Вы уверены, что хотите удалить {0}?", deletedObjectName);
         return (MessageBox.Show(messageText, "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No)
             == MessageBoxResult.Yes);
     }

@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace P.E.Diary.Widgets
 {
@@ -13,7 +10,7 @@ namespace P.E.Diary.Widgets
     public partial class PupilsTable : UserControl
     {
         public SchoolClass CurrentClass;
-            
+
         public PupilsTable()
         {
             InitializeComponent();
@@ -30,7 +27,7 @@ namespace P.E.Diary.Widgets
                 CurrentClass = newClass;
                 foreach (var pupil in CurrentClass.Pupils)
                 {
-                    pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, (pupil.Birthday).Substring(0,10), pupil.Height.ToString(), pupil.Weight.ToString()));
+                    pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, (pupil.Birthday).Substring(0, 10), pupil.Height.ToString(), pupil.Weight.ToString()));
                 }
             }
             Table.Items.Refresh();
@@ -219,7 +216,7 @@ namespace P.E.Diary.Widgets
             if (CurrentClass != null)
             {
                 if (FoolProof.DeletionProtection("ученика"))
-                { 
+                {
                     DeleteRow();
                 }
                 else

@@ -1,16 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace P.E.Diary.Widgets
 {
@@ -102,6 +94,48 @@ namespace P.E.Diary.Widgets
             {
                 FoolProof.UniversalProtection("Заполните имя и формулу");
             }
+        }
+
+        private void SaveTable_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            saveFileDialog.DefaultExt = "csv";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.ShowDialog();
+            string fileName = saveFileDialog.FileName;
+            StreamWriter streamWriter = new StreamWriter(fileName, true, System.Text.Encoding.UTF8);
+            if (fileName != "" && _editingNormative.Ranges != null)
+            {
+                string line = "Оценка;";
+                for (int i = 0; i < _editingNormative.Ranges.Count-1; i++)
+                {
+                    line += (i + Normative.minAge) + ";";
+                }
+                line += (Normative.minAge + _editingNormative.Ranges.Count - 1);
+                streamWriter.WriteLine(line);
+                foreach (string key in _editingNormative.Ranges[0].Keys)
+                {
+                    line = key+";";
+                    for (int i = 0; i < _editingNormative.Ranges[0].Keys.Count - 1; i++)
+                    {
+                        line += _editingNormative.Ranges[i][key] + ";";
+                    }
+                    line += _editingNormative.Ranges[_editingNormative.Ranges[0].Keys.Count - 1][key];
+                    streamWriter.WriteLine(line);
+                }
+            }
+            streamWriter.Close();
+        }
+
+        private void LoadTable_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            string tableFileName = openFileDialog.FileName;
+            TablePath.Text = openFileDialog.FileName;
+            _editingNormative.InsertRanges(tableFileName);
+            SqlReader.EditNormativeRanges(_editingNormative);
         }
     }
 }

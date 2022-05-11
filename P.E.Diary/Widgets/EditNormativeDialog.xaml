@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:P.E.Diary.Widgets" xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         mc:Ignorable="d"
-        Title="Изменить норматив" Height="441" Width="600" ResizeMode="CanMinimize">
+        Title="Изменить норматив" Height="505" Width="642" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Height="323" Margin="0,33,0,0" VerticalAlignment="Top" Width="580" Background="#FFE5E4E4">
+        <StackPanel HorizontalAlignment="Center" Margin="0,33,0,60" Width="604" Background="White">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -24,7 +25,7 @@
                 <Label Content="Название" Width="60" HorizontalAlignment="Left" 
                        Margin="10,12,0,20" IsEnabled="False" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
                 <wpfui:TextBox x:Name="NameBox" TextWrapping="Wrap" 
-                         FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,6,10,10" TabIndex="0">
+                         FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,6,10,10" TabIndex="0">
                     <wpfui:TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -36,7 +37,7 @@
                 </wpfui:TextBox>
                 <Label Content="Категория" HorizontalAlignment="Left" IsEnabled="False" Margin="10,7,0,3"
                        Grid.Column="0" Grid.Row="1"/>
-                <ComboBox x:Name="TypeSelection" Width="120" FontSize="10" Grid.Column="1" Margin="14,0,36,0" Grid.Row="1" TabIndex="1"/>
+                <ComboBox x:Name="TypeSelection" Width="120" FontSize="10" Grid.Column="1" Margin="20,0,36,0" Grid.Row="1" TabIndex="1" HorizontalAlignment="Left"/>
                 <wpfui:Button Appearance="Secondary" Icon="Add20" x:Name="AddType" 
                               Content="Новая категория"  Grid.Column="1" Grid.Row="1"  
                               Margin="146,1,21,0" Background="#FFF6F6F6" Grid.ColumnSpan="2" 
@@ -44,7 +45,7 @@
                               Click="NewType_Click"/>
                 <Label Content="Формула" HorizontalAlignment="Left" Margin="13,16,0,16" IsEnabled="False" Grid.Row="3"/>
                 <wpfui:TextBox x:Name="Formula" TextWrapping="Wrap" 
-                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="14,10,10,10" TabIndex="4">
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,10,10,10" TabIndex="4">
                     <wpfui:TextBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -55,20 +56,41 @@
                     </wpfui:TextBox.RenderTransform>
                 </wpfui:TextBox>
                 <wpfui:Button Appearance="Secondary" Icon="Delete20" x:Name="DeleteType" 
-                              Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="154,1,10,0" 
+                              Content="Удалить категорию"  Grid.Column="2" Grid.Row="1"  Margin="162,1,10,0" 
                               Background="#FFF6F6F6" Grid.ColumnSpan="2" FontSize="10" 
                               VerticalAlignment="Top" TabIndex="3" 
                               Click="DeleteType_Click"/>
+                <Label Content="Условные обозначения" Grid.Row="4" Margin="146,61,0,0" HorizontalAlignment="Left" IsEnabled="False" Height="22" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1" Width="129"/>
+                <Label Content="Таблица&#10;оценивания" HorizontalAlignment="Left" Margin="13,5,0,41" IsEnabled="False" Grid.Row="4" Grid.ColumnSpan="2" Width="67"/>
+                <wpfui:Button Appearance="Secondary" Icon="ArrowCircleUp20" x:Name="LoadTable" 
+                    Content="Загрузить"  Grid.Column="3" Grid.Row="4"  
+                    Margin="0,8,0,0" Background="#FFF6F6F6" 
+                    FontSize="10" VerticalAlignment="Top" TabIndex="2" 
+                    Click="LoadTable_Click" HorizontalAlignment="Center" Height="28" Width="137"/>
+                <wpfui:TextBox x:Name="TablePath" TextWrapping="Wrap" 
+                    FontSize="10" RenderTransformOrigin="0.5,0.5" Grid.Row="4" Grid.Column="1" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" Grid.ColumnSpan="2" Width="207" IsEnabled="False">
+                    <wpfui:TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </wpfui:TextBox.RenderTransform>
+                </wpfui:TextBox>
+                <wpfui:Button Appearance="Secondary" Icon="ArrowCircleDown20" x:Name="SaveTable" 
+                    Content="Сохранить"  Grid.Column="2" Grid.Row="4"  
+                    Margin="54,8,0,0" Background="#FFF6F6F6" 
+                    FontSize="10" VerticalAlignment="Top" TabIndex="2" 
+                    Click="SaveTable_Click" HorizontalAlignment="Left" Height="28" Width="137" Grid.ColumnSpan="2"/>
             </Grid>
-            <Label Content="Условные обозначения" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"/>
 
 
 
         </StackPanel>
         <Label Content="Изменить норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
         <Button x:Name="EditNormativeButton" Content="Изменить норматив" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Background="#FFF6F6F6" FontSize="14" TabIndex="5" Click="EditNormative_Click"/>
-
-        <Grid Height="176" Margin="40,209,40,0" VerticalAlignment="Top">
+        <Grid Margin="19,260,19,69">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -83,46 +105,47 @@
             </Grid.ColumnDefinitions>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="0" 
-                   Content="Параметр" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Параметр" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalAlignment="Left" Width="391" Height="20" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" 
-                   Content="Буква" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+                Content="Буква" FontWeight="Bold" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" 
-                   Content="Результат зачета" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Результат зачета" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalAlignment="Left" Width="391" Height="20" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="1" 
-                   Content="R" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+                Content="R" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="0" 
-                   Content="Вес" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Вес" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" Width="391" HorizontalAlignment="Left" Height="20" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="2" Grid.Column="1" 
-                   Content="W" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+                Content="W" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="0" 
-                   Content="Рост" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Рост" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" Height="20" Width="391" HorizontalAlignment="Left" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="3" Grid.Column="1" 
-                   Content="H" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+                Content="H" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="4" Grid.Column="0" 
-                   Content="Пол" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Пол" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" Height="20" Width="391" HorizontalAlignment="Left" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="4" Grid.Column="1" 
-                   Content="S" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,22" Grid.RowSpan="2"/>
+                Content="S" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
 
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="5" Grid.Column="0" 
-                   Content="Возраст" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,130,0" />
+                Content="Возраст" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,0,0" Height="20" Width="391" HorizontalAlignment="Left" />
             <Label BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="5" Grid.Column="1" 
-                   Content="A" IsEnabled="False" HorizontalContentAlignment="Center" 
-                   VerticalContentAlignment="Center" Margin="390,0,0,0"/>
+                Content="A" IsEnabled="False" HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center" Margin="390,0,0,0" Height="20"/>
         </Grid>
+
     </Grid>
 </Window>

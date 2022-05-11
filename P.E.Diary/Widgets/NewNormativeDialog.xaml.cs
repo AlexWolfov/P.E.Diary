@@ -1,17 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace P.E.Diary.Widgets
 {
@@ -75,7 +65,7 @@ namespace P.E.Diary.Widgets
         {
             if (TypeSelection.SelectedItem != null)
             {
-                if (FoolProof.DeletionProtection(TypeSelection.SelectedItem.ToString()));
+                if (FoolProof.DeletionProtection(TypeSelection.SelectedItem.ToString())) ;
                 {
                     SqlReader.DeleteType(TypeSelection.SelectedItem.ToString());
                     _normativesList.LoadNormatives();
@@ -106,6 +96,7 @@ namespace P.E.Diary.Widgets
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
             _tableFileName = openFileDialog.FileName;
+            TablePath.Text = openFileDialog.FileName;
         }
     }
 }

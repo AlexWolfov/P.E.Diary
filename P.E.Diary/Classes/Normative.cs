@@ -14,9 +14,9 @@ namespace P.E.Diary
         public string Type;
         public List<Dictionary<string, double>> Ranges; //Список диапозонов оценивания по возрасту
 
-        public Normative (int id, string formula, string type, string name)
+        public Normative(int id, string formula, string type, string name)
         {
-            Id = id; 
+            Id = id;
             Formula = formula;
             Type = type;
             Name = name;
@@ -41,14 +41,14 @@ namespace P.E.Diary
             }
             var reader = new StreamReader(fileName);
             reader.ReadLine(); //в первой строке только заголовки
-            while(!reader.EndOfStream)
+            while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
                 var data = line.Split(';');
                 string key = data[0];
                 for (int i = 1; i < data.Length; i++)
                 {
-                    Ranges[i-1][key] = Convert.ToDouble(data[i]);
+                    Ranges[i - 1][key] = Convert.ToDouble(data[i]);
                 }
             }
 
@@ -83,7 +83,7 @@ namespace P.E.Diary
             }
             try
             {
-                 result = Convert.ToDouble(new Expression(formula).Evaluate());
+                result = Convert.ToDouble(new Expression(formula).Evaluate());
             }
             catch (NCalc.EvaluationException exception)
             {
@@ -122,7 +122,7 @@ namespace P.E.Diary
             {
                 if (result < currentColumn["5min"])
                 {
-                    return 6; 
+                    return 6;
                 }
                 if (InRange(result, currentColumn["5min"], currentColumn["4min"]))
                 {
