@@ -44,53 +44,7 @@ namespace P.E.Diary
 
         public int GetMark(Normative normative, double testResult) //возвращает результат норматива для текущего норматива
         {
-            string formula = normative.Formula;
-            formula = formula.Replace("R", testResult.ToString());
-            formula = formula.Replace("W", Weight.ToString());
-            formula = formula.Replace("A", Age.ToString());
-            formula = formula.Replace("H", Height.ToString());
-            if (Gender == "Ж")
-            {
-                formula = formula.Replace("S", "1");
-            }
-            else
-            {
-                formula = formula.Replace("S", "0");
-            }
-
-            try
-            {
-                var result = new Expression(formula).Evaluate();
-                if (result.GetType() == typeof(int))
-                {
-                    if ((int) result > 5)
-                    {
-                        return 6; //аналог 5+
-                    }
-                    else
-                    {
-                        return (int) result;
-                    }
-                }
-
-                if (result.GetType() == typeof(double))
-                {
-                    if ((double) result > 5)
-                    {
-                        return 6; //аналог 5+
-                    }
-
-                    return (int) Math.Round((double) result);
-                }
-
-                return 0;
-            }
-            catch (NCalc.EvaluationException exception)
-            {
-                FoolProof.UniversalProtection(
-                    string.Format("Ошибка в формуле, перепроверьте норматив '{0}'", normative.Name));
-            }
-            return 0;
+            return normative.GetMark(testResult, this);
         }
     }
 }

@@ -17,11 +17,11 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="14" Content="Базы данных" IsEnabled="False"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-        
-        <Button Name="Save" Content="Сохранить" Grid.Row="1" Grid.Column="0" Background="#FFF6F6F6" 
+
+        <wpfui:Button Icon="ArrowCircleDown20"  Appearance="Secondary" Name="Save" Content="Сохранить" Grid.Row="1" Grid.Column="0" Background="#FFF6F6F6" 
                 VerticalAlignment="Stretch" Margin="0,5,1,0" Click="Save_Click"/>
-        
-        <Button Name="Load" Content="Загрузить" Grid.Row="1" Grid.Column="1" Background="#FFF6F6F6" 
+
+        <wpfui:Button Icon="ArrowCircleUp20" Appearance="Secondary" Name="Load" Content="Загрузить" Grid.Row="1" Grid.Column="1" Background="#FFF6F6F6" 
                 VerticalAlignment="Stretch" Margin="1,5,0,0" Click="Load_Click"/>
 
     </Grid>

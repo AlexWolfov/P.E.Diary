@@ -25,7 +25,7 @@ public class SqlReader
                         NormativeId integer
                             primary key autoincrement,
                         Name        varchar(50),
-                        Formula     varchar(50),
+                        Formula     varchar(100),
                         Type        varchar(30)
                     );
 
@@ -54,7 +54,26 @@ public class SqlReader
                             references Normatives,
                         Date        varchar(10)
                     );
-                    ";
+
+                create table MarksTable
+                (
+                    NormativeId integer
+                        constraint MarksTable_Normatives_NormativeId_fk
+                            references Normatives,
+                    Mark        varchar(4),
+                    '10'        varchar(5),
+                    '11'        varchar(5),
+                    '12'        varchar(5),
+                    '13'        varchar(5),
+                    '14'        varchar(5),
+                    '15'        varchar(5),
+                    '16'        varchar(5),
+                    '17'        varchar(5),
+                    '18'        varchar(5),
+                    '19'        varchar(5),
+                    '20'        varchar(5)
+                );
+                ";
                 command.ExecuteScalar();
 
             }
@@ -239,7 +258,7 @@ public class SqlReader
 
     public static Normative ReturnNormative(int id)
     {
-        Normative result = new Normative();
+        Normative result = null;
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
@@ -251,10 +270,11 @@ public class SqlReader
                     reader.Read();
                     if (reader.HasRows)
                     {
-                        result.Id = reader.GetInt32(0);
-                        result.Name = reader.GetString(1);
-                        result.Formula = reader.GetString(2);
-                        result.Type = reader.GetString(3);
+                        result = new Normative(
+                            id: reader.GetInt32(0),
+                            name: reader.GetString(1),
+                            formula: reader.GetString(2),
+                            type: reader.GetString(3));
                     }
                 }
             }
@@ -275,13 +295,12 @@ public class SqlReader
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                        result.Add(reader.GetString(1), new Normative
-                        {
-                            Id = reader.GetInt32(0),
-                            Formula = reader.GetString(2),
-                            Type = reader.GetString(3),
-                            Name = reader.GetString(1)
-                        });
+                        result.Add(reader.GetString(1), new Normative(
+                            id: reader.GetInt32(0),
+                            name: reader.GetString(1),
+                            formula: reader.GetString(2),
+                            type: reader.GetString(3)
+                        ));
                 }
             }
         }
@@ -304,8 +323,9 @@ public class SqlReader
         }
     }
 
-    public static void CreateNormative(Normative normative) //создание нового норматива
+    public static int CreateNormative(Normative normative) //создание нового норматива
     {
+        int result = 0;
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
@@ -316,7 +336,9 @@ public class SqlReader
             {
                 command.ExecuteScalar();
             }
+            result = Convert.ToInt32(connection.LastInsertRowId);
         }
+        return result;
     }
 
     public static void DeleteNormative(Normative normative)
@@ -337,6 +359,106 @@ public class SqlReader
                 command.ExecuteScalar();
             }
         }
+    }
+
+    public static void AddNortmativeRanges(Normative normative)
+    {
+        using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+        {
+            connection.Open();
+            foreach (string key in normative.Ranges[0].Keys)
+            {
+                string commandText = string.Format(@"INSERT INTO main.MarksTable(NormativeId, Mark, '10', 
+                    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20') VALUES({0}, '{1}',", normative.Id, key);
+                for (int i = 0; i < normative.Ranges.Count - 1; i++)
+                {
+                    commandText += "'" + normative.Ranges[i][key] + "',";
+                }
+                commandText += "'" + normative.Ranges[normative.Ranges.Count-1][key] + "')";
+                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                {
+                    command.ExecuteScalar();
+                }
+            }
+        }
+    }
+
+    public static void EditNormativeRanges(Normative normative)
+    {
+        using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+        {
+            connection.Open();
+            foreach (string key in normative.Ranges[0].Keys)
+            {
+                string commandText = string.Format(@"UPDATE main.MarksTable SET");
+                for (int i = 0; i < normative.Ranges.Count - 1; i++)
+                {
+                    commandText += string.Format("'{0}'='{1}',", 
+                        i+Normative.minAge, normative.Ranges[i][key]);
+                }
+                commandText += string.Format("'20'='{0}' WHERE (Mark='{1}') and (NormativeId={2})",
+                    normative.Ranges[normative.Ranges.Count-1][key], key, normative.Id);
+                commandText += "'" + normative.Ranges[normative.Ranges.Count - 1][key] + "')";
+                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                {
+                    command.ExecuteScalar();
+                }
+            }
+        }
+    }
+
+
+    public static List<Dictionary<string, double>> ReturnNormativeRanges(Normative normative)
+    {
+        List<Dictionary<string, double>> result = new List<Dictionary<string, double>>();
+        for (int i = 0; i < 11; i++)
+        {
+            result.Add(new Dictionary<string, double>());
+        }
+        using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+        {
+            connection.Open();
+            for (int i = 1; i<=5; i++)
+            {
+                //выбираем нижние границы диапозонов
+                string commandText = string.Format(
+                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}min')", 
+                    normative.Id, i);
+                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            for (int j = 2; j < 13; j++)
+                            {
+                                result[j - 2].Add(i + "min", Convert.ToDouble(reader.GetString(j))); //костыль, т.к. в SQLite нет double
+                            }
+                        }
+                    }
+                }
+                //выбираем верхние границы диапозонов
+                commandText = string.Format(
+                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}max')",
+                    normative.Id, i);
+                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            for (int j = 2; j < 13; j++)
+                            {
+                                result[j - 2].Add(i + "max", Convert.ToDouble(reader.GetString(j))); //костыль, т.к. в SQLite нет double
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+
     }
 
     #endregion
@@ -579,4 +701,5 @@ public class SqlReader
 
 
     #endregion
+
 }

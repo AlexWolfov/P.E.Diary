@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace P.E.Diary.Widgets
     public partial class NewNormativeDialog : Window
     {
         private NormativesList _normativesList;
+        private string _tableFileName;
 
         public NewNormativeDialog(NormativesList normativesList)
         {
@@ -31,9 +33,8 @@ namespace P.E.Diary.Widgets
 
         private void CreateNewNormative()
         {
-            Normative normative = new Normative();
-            normative.Name = NameBox.Text;
-            normative.Formula = Formula.Text;
+            Normative normative = new Normative(
+                name: NameBox.Text, formula: Formula.Text, type: "Без категории");
             if (TypeSelection.SelectedItem != null)
             {
                 normative.Type = TypeSelection.SelectedItem.ToString();
@@ -42,7 +43,12 @@ namespace P.E.Diary.Widgets
             {
                 normative.Type = "Без категории";
             }
-            SqlReader.CreateNormative(normative);
+            normative.Id = SqlReader.CreateNormative(normative); // сразу же получаем Id норматива, нужно для привязки к нему таблицы оценивания в БД
+            if (_tableFileName != "")
+            {
+                normative.InsertRanges(_tableFileName);
+                SqlReader.AddNortmativeRanges(normative);
+            }
             _normativesList.LoadNormatives();
         }
 
@@ -93,6 +99,13 @@ namespace P.E.Diary.Widgets
             {
                 FoolProof.UniversalProtection("Заполните имя и формулу");
             }
+        }
+
+        private void LoadTable_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            _tableFileName = openFileDialog.FileName;
         }
     }
 }
