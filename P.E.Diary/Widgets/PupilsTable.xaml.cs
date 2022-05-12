@@ -178,10 +178,14 @@ namespace P.E.Diary.Widgets
         {
             for (int i = 0; i < Table.SelectedItems.Count; i++)
             {
-                Pupil pupil = CurrentClass.Pupils[i + Table.SelectedIndex]; //считывем удалемого ученика
-                SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
+                try
+                {
+                    Pupil pupil = CurrentClass.Pupils[i + Table.SelectedIndex]; //считывем удалемого ученика
+                    SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
+                    CurrentClass.Pupils.Remove(pupil);
+                }
+                catch { }
             }
-            CurrentClass.Pupils.RemoveRange(Table.SelectedIndex, Table.SelectedItems.Count);
             LoadTable(CurrentClass);
         }
 

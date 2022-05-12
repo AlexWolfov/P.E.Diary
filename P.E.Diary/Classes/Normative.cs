@@ -97,7 +97,16 @@ namespace P.E.Diary
             //все физкультурные нормативы для отдельно взтого ученика являются монотонным фуекциями
             //это позволяет нам точно определть будет с каждой следубщей отметкой
             //необходимое значение увеличиваться или уменьшаться
-            Dictionary<string, double> currentColumn = Ranges[pupil.Age - minAge]; //колонка с подходящим возрастом
+            Dictionary<string, double> currentColumn; //колонка с подходящим возрастом
+            try
+            {
+                currentColumn = Ranges[pupil.Age - minAge]; //колонка с подходящим возрастом
+            }
+            catch
+            {
+                FoolProof.UniversalProtection("Нет возвраста ученика в таблице");
+                return 0;
+            }
             if (Ranges[0]["5max"] > Ranges[0]["1min"]) //если лучшее значение больше худшего
             {
                 if (result > currentColumn["5max"])

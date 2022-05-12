@@ -54,8 +54,8 @@ namespace P.E.Diary.Widgets
                     SqlReader.ApplyNormative(normative.Id,
                         _pupils[i].Id, //применяем норматив для данного ученика
                         ReturnResultByIndex(i));
-                    return true;
                 }
+                return true;
             }
             else
             {
