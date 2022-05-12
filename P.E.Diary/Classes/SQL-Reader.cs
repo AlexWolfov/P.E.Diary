@@ -55,24 +55,15 @@ public class SqlReader
                         Date        varchar(10)
                     );
 
-                create table MarksTable
-                (
-                    NormativeId integer
-                        constraint MarksTable_Normatives_NormativeId_fk
+                    create table MarksTable
+                    (
+                        NormativeId integer
                             references Normatives,
-                    Mark        varchar(4),
-                    '10'        varchar(5),
-                    '11'        varchar(5),
-                    '12'        varchar(5),
-                    '13'        varchar(5),
-                    '14'        varchar(5),
-                    '15'        varchar(5),
-                    '16'        varchar(5),
-                    '17'        varchar(5),
-                    '18'        varchar(5),
-                    '19'        varchar(5),
-                    '20'        varchar(5)
-                );
+                        Mark        varchar(4),
+                        Age         integer,
+                        Result      varchar(5)
+                    );
+
                 ";
                 command.ExecuteScalar();
 
@@ -358,6 +349,12 @@ public class SqlReader
             {
                 command.ExecuteScalar();
             }
+            commandText = string.Format(
+                "DELETE FROM MarksTable WHERE NormativeId = {0}", normative.Id);
+            using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+            {
+                command.ExecuteScalar();
+            }
         }
     }
 
@@ -368,16 +365,15 @@ public class SqlReader
             connection.Open();
             foreach (string key in normative.Ranges[0].Keys)
             {
-                string commandText = string.Format(@"INSERT INTO main.MarksTable(NormativeId, Mark, '10', 
-                    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20') VALUES({0}, '{1}',", normative.Id, key);
                 for (int i = 0; i < normative.Ranges.Count - 1; i++)
                 {
-                    commandText += "'" + normative.Ranges[i][key] + "',";
-                }
-                commandText += "'" + normative.Ranges[normative.Ranges.Count - 1][key] + "')";
-                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
-                {
-                    command.ExecuteScalar();
+                    string commandText = string.Format(
+                        "INSERT into main.MarksTable(NormativeId, Mark, Age, Result) VALUES({0}, '{1}', {2}, '{3}')",
+                        normative.Id, key, i, normative.Ranges[i][key]);
+                    using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                    {
+                        command.ExecuteScalar();
+                    }
                 }
             }
         }
@@ -390,17 +386,15 @@ public class SqlReader
             connection.Open();
             foreach (string key in normative.Ranges[0].Keys)
             {
-                string commandText = string.Format(@"UPDATE main.MarksTable SET");
-                for (int i = 0; i < normative.Ranges.Count - 1; i++)
+                for (int i = 0; i < normative.Ranges.Count; i++)
                 {
-                    commandText += string.Format("'{0}'='{1}',",
-                        i + Normative.minAge, normative.Ranges[i][key]);
-                }
-                commandText += string.Format("'20'='{0}' WHERE (Mark='{1}') and (NormativeId={2})",
-                    normative.Ranges[normative.Ranges.Count - 1][key], key, normative.Id);
-                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
-                {
-                    command.ExecuteScalar();
+                    string commandText = string.Format(
+                        "UPDATE main.MarksTable SET Age = '{0}', Result = '{1}', WHERE (NormativeId = {2}) and (Mark = '{3}')",
+                        i, normative.Ranges[i][key], normative.Id, key);
+                    using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                    {
+                        command.ExecuteScalar();
+                    }
                 }
             }
         }
@@ -410,50 +404,40 @@ public class SqlReader
     public static List<Dictionary<string, double>> ReturnNormativeRanges(Normative normative)
     {
         List<Dictionary<string, double>> result = new List<Dictionary<string, double>>();
-        for (int i = 0; i < 11; i++)
-        {
-            result.Add(new Dictionary<string, double>());
-        }
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
-            for (int i = 1; i <= 5; i++)
+            string commandText = string.Format("SELECT count(*) FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '5max')", normative.Id); //считаем количетво возраство в таблице
+            
+            int rowsCount;
+            using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
             {
-                //выбираем нижние границы диапозонов
-                string commandText = string.Format(
-                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}min')",
-                    normative.Id, i);
-                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            for (int j = 2; j < 13; j++)
-                            {
-                                result[j - 2].Add(i + "min", Convert.ToDouble(reader.GetString(j))); //костыль, т.к. в SQLite нет double
-                            }
-                        }
-                    }
+                    reader.Read();
+                    rowsCount = reader.GetInt32(0); 
                 }
-                //выбираем верхние границы диапозонов
-                commandText = string.Format(
-                    "SELECT * FROM MarksTable WHERE (NormativeId = {0}) and (Mark = '{1}max')",
-                    normative.Id, i);
-                using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+            }
+            for (int i = 0; i < rowsCount; i++) //создаем нужное количество столбцов
+            {
+                result.Add(new Dictionary<string, double>()); 
+            }
+            
+            commandText = string.Format("SELECT Mark, Age, Result FROM MarksTable WHERE NormativeId = {0}", normative.Id);
+            using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            for (int j = 2; j < 13; j++)
-                            {
-                                result[j - 2].Add(i + "max", Convert.ToDouble(reader.GetString(j))); //костыль, т.к. в SQLite нет double
-                            }
-                        }
+                    while (reader.Read())
+                    { 
+                        string key = reader.GetString(0);
+                        int age = reader.GetInt32(1);
+                        double value = Convert.ToDouble(reader.GetString(2)); //костыль, т.к. в SQLite нет double
+                        result[age].Add(key, value);
                     }
                 }
             }
+ 
         }
 
         return result;

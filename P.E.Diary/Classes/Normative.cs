@@ -39,16 +39,19 @@ namespace P.E.Diary
             {
                 Ranges.Add(new Dictionary<string, double>());
             }
-            var reader = new StreamReader(fileName);
-            reader.ReadLine(); //в первой строке только заголовки
-            while (!reader.EndOfStream)
+            if (fileName != null && fileName != "")
             {
-                string line = reader.ReadLine();
-                var data = line.Split(';');
-                string key = data[0];
-                for (int i = 1; i < data.Length; i++)
+                var reader = new StreamReader(fileName);
+                reader.ReadLine(); //в первой строке только заголовки
+                while (!reader.EndOfStream)
                 {
-                    Ranges[i - 1][key] = Convert.ToDouble(data[i]);
+                    string line = reader.ReadLine();
+                    var data = line.Split(';');
+                    string key = data[0];
+                    for (int i = 1; i < data.Length; i++)
+                    {
+                        Ranges[i - 1][key] = Convert.ToDouble(data[i]);
+                    }
                 }
             }
 

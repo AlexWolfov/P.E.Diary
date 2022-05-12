@@ -29,6 +29,14 @@ namespace P.E.Diary.Widgets
         {
             NameBox.Text = _editingNormative.Name;
             Formula.Text = _editingNormative.Formula;
+            if (_editingNormative.Ranges.Count > 0)
+            {
+                TablePath.Text = "Таблица в базе данных";
+            }
+            else
+            {
+                TablePath.Text = "Нет таблицы";
+            }
         }
 
         private void CreateNewNormative()
