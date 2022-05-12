@@ -33,7 +33,7 @@ namespace P.E.Diary.Widgets
             if (PupilsTable.Table.CurrentCell != null)
             {
                 TestEditDialog testEditDialog = new TestEditDialog(_classes[ClassesList.SelectedItem.ToString()].Pupils,
-                    PupilsTable.GetSelectedTest());
+                    PupilsTable.GetSelectedTest(), PupilsTable);
             }
             else
             {

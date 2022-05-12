@@ -104,13 +104,13 @@ namespace P.E.Diary.Widgets
             saveFileDialog.AddExtension = true;
             saveFileDialog.ShowDialog();
             string fileName = saveFileDialog.FileName;
-            StreamWriter streamWriter = new StreamWriter(fileName, true, System.Text.Encoding.UTF8);
             if (fileName != "" && _editingNormative.Ranges != null)
             {
+                StreamWriter streamWriter = new StreamWriter(fileName, true, System.Text.Encoding.UTF8);
                 string line = "Оценка;";
                 for (int i = 0; i < _editingNormative.Ranges.Count-1; i++)
                 {
-                    line += (i + Normative.minAge) + ";";
+                    line += (i + Normative.minAge) + " лет" + ";";
                 }
                 line += (Normative.minAge + _editingNormative.Ranges.Count - 1);
                 streamWriter.WriteLine(line);
@@ -124,8 +124,12 @@ namespace P.E.Diary.Widgets
                     line += _editingNormative.Ranges[_editingNormative.Ranges[0].Keys.Count - 1][key];
                     streamWriter.WriteLine(line);
                 }
+                streamWriter.Close();
             }
-            streamWriter.Close();
+            else
+            {
+                FoolProof.UniversalProtection("Выберите корректный путь");
+            }
         }
 
         private void LoadTable_Click(object sender, RoutedEventArgs e)
@@ -134,8 +138,22 @@ namespace P.E.Diary.Widgets
             openFileDialog.ShowDialog();
             string tableFileName = openFileDialog.FileName;
             TablePath.Text = openFileDialog.FileName;
-            _editingNormative.InsertRanges(tableFileName);
-            SqlReader.EditNormativeRanges(_editingNormative);
+            if (tableFileName != "")
+            {
+                try
+                {
+                    _editingNormative.InsertRanges(tableFileName);
+                    SqlReader.EditNormativeRanges(_editingNormative);
+                }
+                catch (Exception ex)
+                {
+                    FoolProof.UniversalProtection("Неправильный файл");
+                }
+            }
+            else
+            {
+                FoolProof.UniversalProtection("Вы не выбрали файл");
+            }
         }
     }
 }

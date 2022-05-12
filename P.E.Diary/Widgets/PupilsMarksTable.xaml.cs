@@ -9,7 +9,7 @@ namespace P.E.Diary.Widgets
     /// </summary>
     public partial class PupilsMarksTable : UserControl
     {
-        private SchoolClass _currentSchoolClass;
+        public SchoolClass CurrentSchoolClass;
         private List<Test> _tests;
 
         public PupilsMarksTable()
@@ -32,18 +32,18 @@ namespace P.E.Diary.Widgets
             {
                 Test test = GetSelectedTest();
                 SqlReader.DeleteTest(test.Normative.Id, test.Date);
-                LoadTable(_currentSchoolClass);
+                LoadTable(CurrentSchoolClass);
             }
         }
 
         public void LoadTable(SchoolClass schoolClass)
         {
-            _currentSchoolClass = schoolClass;
+            CurrentSchoolClass = schoolClass;
             _tests = SqlReader.GetSchoolClassTests(schoolClass);
             Table.ItemsSource = null; //очистка
             Table.Columns.Clear();
 
-            PupilMarksRow[] data = new PupilMarksRow[_currentSchoolClass.Pupils.Count];
+            PupilMarksRow[] data = new PupilMarksRow[CurrentSchoolClass.Pupils.Count];
             Binding binding = new Binding("Data[0]");
             DataGridTextColumn surnameColumn = new DataGridTextColumn { Header = "Фамилия", Binding = binding };
             Table.Columns.Add(surnameColumn);
@@ -56,16 +56,16 @@ namespace P.E.Diary.Widgets
                 string newColumnHeader = _tests[i].Normative.Name + " " + _tests[i].Date.ToString();
                 Table.Columns.Add(new DataGridTextColumn { Header = newColumnHeader, Binding = binding });
             }
-            for (int i = 0; i < _currentSchoolClass.Pupils.Count; i++)
+            for (int i = 0; i < CurrentSchoolClass.Pupils.Count; i++)
             {
                 PupilMarksRow row = new PupilMarksRow(_tests.Count + 2);
-                row.Data[0] = _currentSchoolClass.Pupils[i].Surname;
-                row.Data[1] = _currentSchoolClass.Pupils[i].Name;
+                row.Data[0] = CurrentSchoolClass.Pupils[i].Surname;
+                row.Data[1] = CurrentSchoolClass.Pupils[i].Name;
                 for (int j = 0; j < _tests.Count; j++)
                 {
                     string header = _tests[j].Normative.Name + " " + _tests[j].Date.ToString();
-                    int mark = _currentSchoolClass.Pupils[i].GetMark(_tests[j].Normative,
-                        SqlReader.GetTestResult(_tests[j].Normative.Id, _currentSchoolClass.Pupils[i].Id,
+                    int mark = CurrentSchoolClass.Pupils[i].GetMark(_tests[j].Normative,
+                        SqlReader.GetTestResult(_tests[j].Normative.Id, CurrentSchoolClass.Pupils[i].Id,
                         _tests[j].Date));
                     if (mark > 5)
                     {
