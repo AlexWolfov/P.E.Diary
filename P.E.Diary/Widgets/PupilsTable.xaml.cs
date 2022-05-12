@@ -27,7 +27,7 @@ namespace P.E.Diary.Widgets
                 CurrentClass = newClass;
                 foreach (var pupil in CurrentClass.Pupils)
                 {
-                    pupilRows.Add(new PupilRow(pupil.Surname, pupil.Name, pupil.Gender, (pupil.Birthday).Substring(0, 10), pupil.Height.ToString(), pupil.Weight.ToString()));
+                    pupilRows.Add(new PupilRow(pupil));
                 }
             }
             Table.Items.Refresh();
@@ -174,17 +174,12 @@ namespace P.E.Diary.Widgets
             LoadTable(CurrentClass);
         }
 
-        private void DeleteRow()
+        private void DeleteRows()
         {
-            for (int i = 0; i < Table.SelectedItems.Count; i++)
+            foreach (PupilRow pupil in Table.SelectedItems)
             {
-                try
-                {
-                    Pupil pupil = CurrentClass.Pupils[i + Table.SelectedIndex]; //считывем удалемого ученика
-                    SqlReader.DeletePupil(pupil.Id); //удаляем ученика из базы Данных
-                    CurrentClass.Pupils.Remove(pupil);
-                }
-                catch { }
+                SqlReader.DeletePupil(pupil.Pupil.Id); //удаляем ученика из базы Данных
+                CurrentClass.Pupils.Remove(pupil.Pupil);
             }
             LoadTable(CurrentClass);
         }
@@ -221,7 +216,7 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection("ученика"))
                 {
-                    DeleteRow();
+                    DeleteRows();
                 }
                 else
                 {
@@ -236,7 +231,7 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection("ученика"))
                 {
-                    DeleteRow();
+                    DeleteRows();
                 }
                 else
                 {
@@ -251,7 +246,7 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection("ученика"))
                 {
-                    DeleteRow();
+                    DeleteRows();
                 }
                 else
                 {
@@ -316,7 +311,7 @@ namespace P.E.Diary.Widgets
             {
                 if (FoolProof.DeletionProtection("ученика"))
                 {
-                    DeleteRow();
+                    DeleteRows();
                 }
             }
             else
@@ -347,14 +342,15 @@ namespace P.E.Diary.Widgets
 
     public class PupilRow
     {
-        public PupilRow(string surname, string name, string gender, string date, string height, string weight)
+        public PupilRow(Pupil pupil)
         {
-            Фамилия = surname;
-            Имя = name;
-            Пол = gender;
-            Дата_рождения = date;
-            Рост = height;
-            Масса = weight;
+            Фамилия = pupil.Surname;
+            Имя = pupil.Name;
+            Пол = pupil.Gender;
+            Дата_рождения = pupil.Birthday.Substring(0,10);
+            Рост = pupil.Height.ToString();
+            Масса = pupil.Weight.ToString();
+            Pupil = pupil;
         }
         public string Фамилия { get; set; }
         public string Имя { get; set; }
@@ -362,6 +358,7 @@ namespace P.E.Diary.Widgets
         public string Дата_рождения { get; set; }
         public string Рост { get; set; }
         public string Масса { get; set; }
+        public Pupil Pupil; //ученик, который отображается
     }
 }
 
