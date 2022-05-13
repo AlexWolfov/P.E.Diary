@@ -355,6 +355,12 @@ public class SqlReader
             {
                 command.ExecuteScalar();
             }
+            commandText = string.Format(
+                "DELETE FROM MarksTable WHERE NormativeId = {0}", normative.Id);
+            using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+            {
+                command.ExecuteScalar();
+            }
         }
     }
 
