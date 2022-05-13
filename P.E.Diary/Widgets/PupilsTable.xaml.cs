@@ -112,56 +112,60 @@ namespace P.E.Diary.Widgets
         {
             if (CurrentClass != null && GetCurrentCellAdressAxesY() != -1)
             {
-                Pupil pupil = CurrentClass.Pupils[GetCurrentCellAdressAxesY()]; //считывем изменяемого ученика
-                switch (e.Column.Header)
+                try
                 {
-                    case "Фамилия":
-                        pupil.Surname = value;
-                        break;
-                    case "Имя":
-                        pupil.Name = value;
-                        break;
-                    case "Пол":
-                        if (value == "М" || value == "Ж")
-                        {
-                            pupil.Gender = value;
-                        }
-                        else
-                        {
-                            FoolProof.UniversalProtection("Введите М либо Ж (русской раскладкой)");
-                            e.Cancel = true;
-                        }
-                        break;
-                    case "Дата_рождения":
-                        string date = FoolProof.ReturnDate(pupil.Birthday, value);
-                        if (date != "-1")
-                        {
-                            pupil.Birthday = date;
-                        }
-                        else
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    case "Рост":
-                        if (!FoolProof.SetInt(ref pupil.Height, value))
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    case "Масса":
-                        if (!FoolProof.SetInt(ref pupil.Weight, value))
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                    Pupil pupil = CurrentClass.Pupils[GetCurrentCellAdressAxesY()]; //считывем изменяемого ученика
+                    switch (e.Column.Header)
+                    {
+                        case "Фамилия":
+                            pupil.Surname = value;
+                            break;
+                        case "Имя":
+                            pupil.Name = value;
+                            break;
+                        case "Пол":
+                            if (value == "М" || value == "Ж")
+                            {
+                                pupil.Gender = value;
+                            }
+                            else
+                            {
+                                FoolProof.UniversalProtection("Введите М либо Ж (русской раскладкой)");
+                                e.Cancel = true;
+                            }
+                            break;
+                        case "Дата_рождения":
+                            string date = FoolProof.ReturnDate(pupil.Birthday, value);
+                            if (date != "-1")
+                            {
+                                pupil.Birthday = date;
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                            }
+                            break;
+                        case "Рост":
+                            if (!FoolProof.SetInt(ref pupil.Height, value))
+                            {
+                                e.Cancel = true;
+                            }
+                            break;
+                        case "Масса":
+                            if (!FoolProof.SetInt(ref pupil.Weight, value))
+                            {
+                                e.Cancel = true;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
 
-                CurrentClass.Pupils[GetCurrentCellAdressAxesY()] = pupil;
-                SqlReader.EditPupil(pupil);
-                //LoadTable(CurrentClass);
+                    CurrentClass.Pupils[GetCurrentCellAdressAxesY()] = pupil;
+                    SqlReader.EditPupil(pupil);
+                    //LoadTable(CurrentClass);
+                }
+                catch { }
             }
         }
 
@@ -180,9 +184,8 @@ namespace P.E.Diary.Widgets
             {
                 SqlReader.DeletePupil(pupil.Pupil.Id); //удаляем ученика из базы Данных
                 CurrentClass.Pupils.Remove(pupil.Pupil);
-                Table.Items.Remove(pupil);
             }
-            Table.Items.Refresh();
+            LoadTable(CurrentClass);
         }
 
 
