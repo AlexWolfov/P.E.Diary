@@ -36,7 +36,14 @@ namespace P.E.Diary.Widgets
             normative.Id = SqlReader.CreateNormative(normative); // сразу же получаем Id норматива, нужно для привязки к нему таблицы оценивания в БД
             if (_tableFileName != "")
             {
-                normative.InsertRanges(_tableFileName);
+                try
+                {
+                    normative.InsertRanges(_tableFileName);
+                }
+                catch (Exception ex)
+                {
+                    FoolProof.UniversalProtection("Ошибка в файле");
+                }
                 SqlReader.AddNortmativeRanges(normative);
             }
             _normativesList.LoadNormatives();

@@ -367,13 +367,18 @@ public class SqlReader
             {
                 for (int i = 0; i < normative.Ranges.Count - 1; i++)
                 {
-                    string commandText = string.Format(
-                        "INSERT into main.MarksTable(NormativeId, Mark, Age, Result) VALUES({0}, '{1}', {2}, '{3}')",
-                        normative.Id, key, i, normative.Ranges[i][key]);
-                    using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                    try
                     {
-                        command.ExecuteScalar();
+                        string commandText = string.Format(
+                            "INSERT into main.MarksTable(NormativeId, Mark, Age, Result) VALUES({0}, '{1}', {2}, '{3}')",
+                            normative.Id, key, i, normative.Ranges[i][key]);
+                        using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
+                        {
+                            command.ExecuteScalar();
+                        }
                     }
+                    catch (Exception ex)
+                    { }
                 }
             }
         }
@@ -384,19 +389,12 @@ public class SqlReader
         using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
         {
             connection.Open();
-            foreach (string key in normative.Ranges[0].Keys)
+            string commandText = string.Format("DELETE FROM MarksTable WHERE NormativeId = {0}", normative.Id);
+            using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
             {
-                for (int i = 0; i < normative.Ranges.Count; i++)
-                {
-                    string commandText = string.Format(
-                        "UPDATE main.MarksTable SET Age = '{0}', Result = '{1}', WHERE (NormativeId = {2}) and (Mark = '{3}')",
-                        i, normative.Ranges[i][key], normative.Id, key);
-                    using (SQLiteCommand command = new SQLiteCommand(commandText, connection))
-                    {
-                        command.ExecuteScalar();
-                    }
-                }
+                command.ExecuteScalar();
             }
+            AddNortmativeRanges(normative);
         }
     }
 
