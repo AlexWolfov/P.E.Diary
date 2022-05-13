@@ -2,13 +2,15 @@
 {
     public class TestParticipator
     {
-        public TestParticipator(string surname, string name, double result)
+        public TestParticipator(Pupil pupil, double result)
         {
-            Фамилия = surname;
-            Имя = name;
+            Pupil = pupil;
+            Фамилия = pupil.Surname;
+            Имя = pupil.Name;
             Результат = result;
         }
 
+        public Pupil Pupil;
         public string Фамилия { get; private set; }
         public string Имя { get; private set; }
         public double Результат { get; set; }

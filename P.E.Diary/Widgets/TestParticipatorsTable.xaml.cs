@@ -40,7 +40,7 @@ namespace P.E.Diary.Widgets
             List<TestParticipator> participators = new List<TestParticipator>();
             foreach (Pupil pupil in _pupils)
             {
-                participators.Add(new TestParticipator(pupil.Surname, pupil.Name, 0));
+                participators.Add(new TestParticipator(pupil, 0));
             }
             Table.ItemsSource = participators;
         }
@@ -68,10 +68,13 @@ namespace P.E.Diary.Widgets
         {
             if (Table.SelectedItem != null)
             {
-                if (FoolProof.MessageBoxProtection("Вы уверены, что хотите убрать ученика с тренировки?", "Удаление"))
+                if (FoolProof.MessageBoxProtection("Вы уверены, что хотите убрать ученика (учеников) с тренировки?", "Удаление"))
                 {
-                    _pupils.RemoveAt(GetCurrentCellAdressAxesY());
-                    ((List<TestParticipator>)Table.ItemsSource).Remove((TestParticipator)Table.SelectedItem);
+                    foreach (TestParticipator participator in Table.SelectedItems)
+                    {
+                        _pupils.Remove(participator.Pupil);
+                        ((List<TestParticipator>)Table.ItemsSource).Remove(participator);
+                    }
                     Table.Items.Refresh();
                 }
             }

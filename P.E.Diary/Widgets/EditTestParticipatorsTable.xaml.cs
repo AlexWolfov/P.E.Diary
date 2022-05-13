@@ -34,7 +34,7 @@ namespace P.E.Diary.Widgets
             List<TestParticipator> participators = new List<TestParticipator>();
             foreach (Pupil pupil in _pupils)
             {
-                participators.Add(new TestParticipator(pupil.Surname, pupil.Name,
+                participators.Add(new TestParticipator(pupil,
                     SqlReader.GetTestResult(_currentTest.Normative.Id, pupil.Id, _currentTest.Date)));
 
             }

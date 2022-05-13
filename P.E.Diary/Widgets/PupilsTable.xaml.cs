@@ -180,8 +180,9 @@ namespace P.E.Diary.Widgets
             {
                 SqlReader.DeletePupil(pupil.Pupil.Id); //удаляем ученика из базы Данных
                 CurrentClass.Pupils.Remove(pupil.Pupil);
+                Table.Items.Remove(pupil);
             }
-            LoadTable(CurrentClass);
+            Table.Items.Refresh();
         }
 
 
